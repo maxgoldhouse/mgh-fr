@@ -1,0 +1,8 @@
+steps:
+  - id: 'build site with hugo'
+    name: gcr.io/$PROJECT_ID/hugo-$PROJECT_ID
+    args: ['-v','--destination=public/static']
+  - id: 'gcloud deploy app'
+    name: gcr.io/cloud-builders/gcloud-slim
+    dir: public
+    args: ['--project=$PROJECT_ID', 'app', 'deploy', 'app.yaml', '--quiet', '--version=$PROJECT_ID']
