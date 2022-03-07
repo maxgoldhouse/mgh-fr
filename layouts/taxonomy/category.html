@@ -1,0 +1,32 @@
+{{ define "head" }}
+    
+{{ end }}
+
+{{ define "header" }}
+
+{{ end }}
+
+{{ define "main" }}
+<div class="container">
+        {{ range .Pages }}
+        <div class="property columns">
+            <div class="column is-one-third">
+                    
+                
+            </div>
+            <div class="column is-two-thirds">
+                    <a href="{{.Permalink}}">{{.Params.ptype}} {{.Params.location}} {{.Params.town}}</a>
+            </div>
+        </div>
+        {{ end }}
+</div>
+
+{{ end }}
+
+{{ define "more" }}
+
+{{ end }}
+
+{{ define "footer" }}
+ 
+{{ end }}

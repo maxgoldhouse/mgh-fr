@@ -1,0 +1,56 @@
+{{ define "head" }}
+    
+{{ end }}
+
+{{ define "header" }}
+
+{{ end }}
+
+{{ define "main" }}
+<div class="container">                   
+        {{ range sort .Pages .Params.price}}
+
+        <a href='{{ trim .Permalink "index.json"}}' style="color:black;">
+        <div class="property columns">  
+            <div class="column is-one-third">
+         
+                <div class="rubrunimage withbuttons" style='min-height:300px;background-size: cover;background-repeat:no-repeat;background:cover;background-image:url({{ replace .Params.thumb "w640" "w400-h300-p" }});'>
+                    {{if eq .Params.salestage 2}}<button class="button is-medium is-danger is-sold"> S O L D </button>{{ end }}
+                    {{if eq .Params.salestage 1}}<button class="button is-medium is-warning is-offer"> R E S E R V E D </button>{{ end }}
+                </div>           
+
+            </div>
+            <div class="column is-two-thirds is-outlined">
+                <div class="proplistdetails">
+                    <div class="is-size-4">{{.Params.beds}} Bedroom {{.Params.ptype}} in {{.Params.location}}</div>
+                        {{ $intprice := int .Params.price }}
+                        <div class="is-size-5">€ <span>{{ lang.NumFmt 2 $intprice "- . ," }}</span></div>
+                            <div class="column is-three-fifths">
+                                <div class="columns is-mobile">
+                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7"><img src="../../img/bed.jpg"/></span><br/> {{ .Params.beds }} </div>
+                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7"><img src="../../img/bath.jpg"/></span><br/>  {{ .Params.baths }} </div>
+                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7">Living space</span><br/>  {{ .Params.living }} m²</div>
+                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7">Pool</span><br/>  {{ .Params.pool }}</div>
+                                </div>
+                            </div>
+                    <p class="label--text-color card__description el-mb-clear">{{substr .Params.description 0 240}}...</p>
+                    <button class="btn btn--block btn-primary card__button">See details</button>
+                </div>              
+            </div>
+        </div>
+        </a>
+    <hr>
+    {{ end }}
+   <br/>     
+</div>
+{{ end }}
+
+{{ define "more" }}
+<section style="padding: 0 10%">
+        {{  partial "rubruns.html" . }}
+    </section>
+{{ end }}
+
+{{ define "footer" }}
+ 
+{{ end }}

@@ -1,0 +1,38 @@
+[[plugins]]
+ package = "@netlify/plugin-local-install-core"
+[[plugins]]
+package = "/plugins/plugin-feed-to-content"
+[plugins.inputs]
+contentdirectory = "content"
+[[plugins.inputs.feeds]]
+name = "biens"
+url = "https://mgh-props.appspot.com/json/propdata/EN"
+ttl = 86400
+
+[context.production.environment]
+  HUGO_VERSION = "0.80.0"
+
+[[redirects]]
+from = "/search/"
+query = {location = "Guardamar"}
+to = "/homes/guardamar-del-segura/"
+status = 301
+force = false
+[[redirects]]
+from = "/search/"
+query = {location = "guardamar"}
+to = "/homes/guardamar-del-segura/"
+status = 301
+force = false
+[[redirects]]
+from = "/search/"
+query = {location = "Villamartin"}
+to = "/homes/villamartin/"
+status = 301
+force = false
+[[redirects]]
+from = "/search/"
+query = {location = "villamartin"}
+to = "/homes/villamartin/"
+status = 301
+force = false

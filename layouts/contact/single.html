@@ -1,0 +1,52 @@
+{{ define "head" }}
+    
+{{ end }}
+
+{{ define "header" }}
+
+{{ end }}
+
+{{ define "main" }}
+<section id="contact">
+        <div class="container">
+    <table class="table is-bordered">
+        <tr>
+            <td>Contact</td><td>{{ .Params.contact }} <a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></td>
+        </tr>
+
+        <tr>
+            <td>Company Name</td><td>{{ .Params.company }}</td>
+        </tr>
+        <tr>
+            <td>Company registration</td><td>{{ .Params.registration }}</td>
+        </tr>
+        <tr>
+            <td>Mobile DE</td><td>{{ .Params.mobile.de }}</td>
+        </tr>
+        <tr>
+            <td>Mobile ES</td><td>{{ .Params.mobile.es }}</td>
+        </tr>
+        <tr>
+            <td>Address DE</td><td>{{ .Params.address.de }}</td>
+        </tr>
+        <tr>
+            <td>Address ES</td><td>{{ .Params.address.es }}</td>
+        </tr>
+    </table>
+    </div>
+</section>
+
+
+{{ end }}
+
+{{ define "more" }}
+
+{{ end }}
+
+{{ define "footer" }}
+ 
+{{ end }}
+
+{{ define "foot" }}
+  
+{{ end }}

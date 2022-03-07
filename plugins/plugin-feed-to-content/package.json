@@ -1,0 +1,12 @@
+{
+    "name": "plugin-feed-to-content",
+    "version": "0.1.0",
+    "description": "A pre build plugin to fetch content from remote JSON feeds and save as md files in content dir",
+    "main": "index.js",
+    "author": "DKL",
+    "license": "ISC",
+    "dependencies": {
+      "node-fetch": "^2.6.0",
+      "request":"^2.88.2"
+    }
+  }

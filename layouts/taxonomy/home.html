@@ -1,0 +1,67 @@
+{{ define "head" }}
+    
+{{ end }}
+
+{{ define "header" }}
+ 
+{{ end }}
+
+{{ define "main" }}
+
+<div class="container propertylist">                   
+    {{ range sort .Pages ".Params.price" "asc" }}
+        
+        <a href='{{ trim .Permalink "index.json"}}' style="color:black;">
+        <div class="property columns">  
+            <div class="column is-one-third taxohomeHTML" style="position:sticky;">
+                {{ $salestage := int .Params.salestage }}
+                {{ $intprice := int .Params.price }}
+                {{ $ptype := .Params.ptype }}
+                {{ $location := delimit .Params.location " " }}
+           
+                <div class="rubrunimage withbuttons" style='min-height:300px;background-size: cover;background-repeat:no-repeat;background:cover;background-image:url({{ replace .Params.thumb "w640" "w400-h240-n" }});'>
+                    {{if eq $salestage 2 }}<button class="button is-medium is-danger is-sold"> S O L D </button>{{ end }}
+                    {{if eq $salestage  1 }}<button class="button is-medium is-warning is-offer"> R E S E R V E D </button>{{ end }}
+                    {{if eq $salestage  0 }}<button class="button is-medium is-price {{ $salestage }}"> {{ $ptype}} €{{ lang.NumFmt 2 $intprice "- . ," }} </button>{{ end }}
+                </div>        
+
+            </div>
+            <div class="column is-two-thirds ">
+                <div class="pad-8">
+                    <div class="is-size-4">{{.Params.beds}} Bedroom {{.Params.ptype}} in {{ $location }}</div>
+   
+                            <div class="column is-three-fifths">
+                                <div class="columns is-mobile">
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Bedrooms" src="../../img/bed-dark.png"/></span><br/> {{ .Params.beds }} </div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Bathrooms" src="../../img/bath-dark.png"/></span><br/>  {{ .Params.baths }} </div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Swimming Pool" src="../../img/pool-dark.png"/></span><br/>  {{ .Params.pool }}</div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Living Space" src="../../img/plan-dark.png"/></span><br/>  {{ .Params.living }} m²</div>
+                                    {{ if eq .Params.living .Params.plot }}
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Plot Size" src="../../img/plot-dark.png"/></span><br/></div>
+                                    {{ else }}
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Plot Size" src="../../img/plot-dark.png"/></span><br/>  {{ .Params.plot }} m²</div>
+                                    {{ end }}
+                                    
+                                </div>
+                            </div>
+                    <p class="label--text-color card__description el-mb-clear">{{substr .Params.description 0 200}}...</p>
+                    <button class="button is-medium is-info see-details">See details</button>
+                </div>              
+            </div>
+        </div>
+        </a>
+    <hr>
+    {{ end }}
+   <br/>     
+</div>
+{{ end }}
+
+{{ define "more" }}
+<section style="padding: 0 10%">
+        {{  partial "rubruns.html" . }}
+    </section>
+{{ end }}
+
+{{ define "footer" }}
+ 
+{{ end }}

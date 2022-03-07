@@ -1,0 +1,56 @@
+<nav class="navbar sticky">
+    <div class="container">
+      <div class="navbar-brand">
+            <a href="/"><figure class="navbar-item image">
+                    <img src="/img/mch-logo-wide-40.svg" style="max-height: 20rem;" alt="manfred costa homes"/>
+                </figure></a>
+        <span class="navbar-burger burger" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu pl-{{ .Permalink }} pe-{{ .Params.deslug }}">
+        <div class="navbar-end">
+          <a href="/homes/resale" class="navbar-item has-text-black is-uppercase ">Resale Homes</a>
+          <a href="/homes/new-build" class="navbar-item has-text-black is-uppercase ">New Homes</a>
+          <a href="/contact/index.html" class="navbar-item has-text-black is-uppercase ">Contact</a>
+          {{ $deUrl := ""}}
+          {{ $globeicon := "//res.cloudinary.com/manfredcostahomes/image/upload/globe.svg" }}
+          {{ if (isset .Params "deslug" ) }}
+            {{ $lowerdeslug := lower .Params.deslug }}
+            {{ $deUrl = printf "%s%s" "/immobilien/" $lowerdeslug }}         
+          {{ else if (in .Permalink "new-build") }}
+            {{ $deUrl = printf "%s" "/homes/neubau/"}}        
+          {{ else if (in .Permalink "resale") }}
+            {{ $deUrl = printf "%s" "/hauser/gebraucht/"}}       
+          {{ else if (in .Permalink "contact") }}
+            {{ $deUrl = printf "%s" "/kontakt/index.html"}}                                            
+          {{ else if (in .Permalink "index.json") }}
+            {{ $deUrl = ""}}        
+          {{ else }}
+            {{if (in .Permalink "homes") }}
+             {{ $deUrl = replace .Permalink "homes" "hauser" }}
+             {{ $deUrl = replace .Permalink "townhouse" "reihenhaus" }}
+             {{ $deUrl = replace .Permalink "apartment" "wohnung" }}           
+             {{ $deUrl = replace $deUrl "costa-blanca-south" "costa-blanca-sud"  }}
+             {{ $deUrl = replace $deUrl "costa-blanca-north" "costa-blanca-nord"  }}
+             {{ $deUrl = strings.TrimRight "/" $deUrl  }}
+            {{end}}       
+          {{ end }}        
+          <a href='{{ .Site.Params.desite }}{{ $deUrl }}' class="navbar-item has-text-black is-uppercase else"><img src="{{ $globeicon }}"/> Deutsch</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script type="text/javascript">
+    (function() {
+      var burger = document.querySelector('.burger');
+      var nav = document.querySelector('#'+burger.dataset.target);
+  
+      burger.addEventListener('click', function(){
+        burger.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+      });
+    })();
+  </script>

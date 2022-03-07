@@ -1,0 +1,60 @@
+{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+{{ $scratch := newScratch }}
+  <!--<li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>-->
+    <div class='rubruns columns is-multiline'>
+      {{ range $key, $value := $taxonomy }}
+        {{ if ( in $key "villamartin") }}
+        {{ $scratch.Add "location" (slice $key) }} 
+        {{ else if or ( in $key "villa") ( in $key "apartment") ( in $key "house") ( in $key "new-build") }}
+        {{ $scratch.Add "proptypes" (slice $key) }}                       
+        {{ else if ( in $key "from") }} 
+        {{ $scratch.Add "price" (slice $key) }}
+        {{ else if ( in $key "region") }}
+        {{ $scratch.Add "region" (slice $key) }}        
+        {{ else if ( in $key "province") }}
+        {{ $scratch.Add "province" (slice $key) }}
+        {{ else if ( in $key "costa-") }}
+        {{ $scratch.Add "costa" (slice $key) }}                          
+        {{ else }}
+        {{ $scratch.Add "location" (slice $key) }}
+        {{ end }}
+      {{ end }}
+      <span class="column is-full is-size-4">Property Listed by Costa</span>
+      {{ range ($scratch.Get "costa") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+      </span>
+      {{ end }}
+      <span class="column is-full is-size-4">Property Listed by Region</span>
+      {{ range ($scratch.Get "region") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+      </span>
+      {{ end }}      
+      <span class="column is-full is-size-4">Property Listed by Province</span>
+      {{ range ($scratch.Get "province") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+      </span>
+      {{ end }}
+      <span class="column is-full is-size-4">Property Listed By Location</span>
+      {{ range ($scratch.Get "location") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+      </span>
+      {{ end }}
+      <span class="column is-full is-size-4">Property Listed by Type of Property</span>
+      {{ range ($scratch.Get "proptypes") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}"><locattion style="text-transform: capitalize;" >{{ humanize . }} </locattion>homes for sale</a> 
+      </span>
+      {{ end }}
+      <span class="column is-full is-size-4">Property Listed by Price</span>
+      {{ range ($scratch.Get "price") }}
+      <span class="column is-half is-size-5"> 
+          <a href="/homes/{{ . }}">Homes <locattion style="text-transform: capitalize;" >{{ replace (replace  . "from-" "from €") "-to-" " to €"}}</locattion></a> 
+      </span>
+      {{ end }}
+    </div>
+  
+{{ end }}

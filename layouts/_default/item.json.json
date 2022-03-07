@@ -1,0 +1,21 @@
+{
+    "ref": "{{ .Params.ref }}",
+    "price": "{{ .Params.price }}",
+    "toprice": "{{ .Params.price }}",
+    "fromprice": "{{ .Params.price }}",
+    "salestage": "{{ .Params.salestage }}",
+    "ptype" : "{{ .Params.ptype }}",
+    "plot" : "{{ .Params.plot }}",
+    "living" : "{{ .Params.living }}",
+    "location" : "{{ .Params.location }}",
+    "town": "{{ .Params.town}}",
+    "province": "{{ .Params.province }}",
+    "costa": "{{ .Params.costa }}",
+    "community": "{{ .Params.community }}",
+    "beds": "{{ .Params.beds }}",
+    "baths": "{{ .Params.baths }}",
+    "pool": "{{ .Params.pool }}",
+    "url": "{{ .Params.slug }}",
+    "desc":"{{ substr .Params.description 0 240 }}",
+    "thumb":"{{ .Params.thumb }}"
+}

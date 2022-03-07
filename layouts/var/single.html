@@ -1,0 +1,220 @@
+{{ define "head" }}
+
+<link rel="stylesheet" href="/css/amp.css?1">
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+<script async="" custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    
+{{ end }}
+
+{{ define "header" }}
+
+{{ end }}
+
+{{ define "main" }}
+<div class="container">
+  <div class="columns is-multiline is-desktop is-gapless">
+      <div class="column is-three-quarters-desktop">
+          <div class="navbar">
+              <div class="navbar-item navbar-start has-text-white has-background-mchbrown is-small "><a id="btn-property-back" href="javascript:goback('/');">
+                <img width="30" height="30" title="" alt="" src="/../img/back.png" />
+                </a> </div>
+          <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchbrown">{{ .Params.ptype }} {{ .Params.location }} {{ if ne .Params.location .Params.town }}{{ .Params.town }}{{ end }}{{if eq .Params.salestage 0 }} €{{ .Params.price | lang.NumFmt 0 }}{{ end }}{{if eq .Params.salestage 2 }} <button class="button is-medium is-danger is-sold-single"> S O L D </button>{{ end }} {{if eq .Params.salestage 1 }} <button class="button is-medium is-warning is-offer-single"> R E S E R V E D </button>{{ end }}   </div>
+          </div>
+          <amp-carousel  width="150" height="100" layout="responsive" type="slides" autoplay delay="3200"> 
+              {{ range .Params.pics }}
+              <amp-img src="{{ . }}" width="150" height="80" layout="responsive"></amp-img>
+              {{ end }}
+            </amp-carousel>
+      </div>
+      <div class="column is-one-quarter-desktop is-hidden-touch" id="formboxdesktop">
+        <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchyellow ">Ref: {{ .Params.ref }}</div>
+      <div style="padding: 3rem;">
+          <form>
+              <div class="text-section--dark enquiry-form__heading el-default-padding">
+                <h2 class="is-size-3">Make an enquiry</h2>
+              </div>
+              <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control">
+                    <input name="name" class="input" type="text" placeholder="eg: Graham Green" required>
+                  </div>
+              </div>
+              <div class="field">
+                    <label class="label">E-Mail</label>
+                    <div class="control">
+                      <input name="name" class="input" type="email" placeholder="eg: ggreen@gmail.com" required>
+                    </div>
+              </div>
+              <div class="field">
+                  <label class="label">Message</label>
+                  <div class="control">
+                    <textarea name="message" class="textarea" placeholder="Do you have any questions about this property?">Please send me more information about this {{ .Params.ptype }}</textarea>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="control">
+                    <label class="checkbox">
+                      <input type="checkbox">
+                      Get property alerts & newsletter by email
+                      </label>
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="control">
+                      <input type="hidden" name="cc" id="cc" value="post@manfredcostahomes.com">
+                      <input type="hidden" name="property" id="property" value="<a href='www.manfredcostahomes.com/{{ .Params.slug }}'>{{ .Params.ref }}</a>">
+                      <input type="hidden" name="price" id="price" value="EUR <span class='price_eur'>€{{ .Params.price }}</span> ">
+                      <input type="hidden" name="photo" id="photo" value="<img src='{{ .Params.thumb }}'/>">
+                      <input id="source" name="formname" type="hidden" value="ManfredCostHomes Enquiry {{ .Params.ref }}">
+                    <input type="submit" class="button is-sendenq" value="Send enquiry">
+                  </div>                    
+              </div>                   
+            </form>
+      </div>
+      </div>
+    <!--</div>-->
+    
+    
+  <!--<div class="columns is-gapless">-->
+    <div class="column is-three-quarters-desktop">
+      <div class="columns is-mobile pad-top-12">
+      <!-- <div class="column  is-one-quarter is-vcentered is-size-5 has-text-centered has-text-white has-background-mchbrown">{{ .Params.ptype }} </div> -->
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/bed.png"/></span><br/> {{ .Params.beds }} </div>
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/bath.png"/></span><br/>  {{ .Params.baths }} </div>
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/pool.png"/></span><br/>  {{ .Params.pool }}</div>
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plan.png"/></span><br/>  {{ .Params.living }} m²</div>    
+      {{ if eq .Params.living .Params.plot}}
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plot.png"/></span><br/></div>
+      {{ else }}
+      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plot.png"/></span><br/>  {{ .Params.plot }} m²</div>
+      {{ end }}
+      
+    </div>
+  </div>
+  <!--</div>-->
+  <div class="xsection">
+      <div class="column is-three-quarters-desktop">
+        <ul id="propfeatures" class="has-text-centered">{{ range .Params.features }}<li class="feature is-uppercase has-text-weight-semibold">🛡{{ . }} </li>{{ end }}</ul>
+        <div>{{ .Params.description }}</div>
+      </div>
+    </div>
+    <div class="column is-one-quarter-desktop is-hidden-desktop" id="formboxtouch">
+      <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchyellow ">Ref: {{ .Params.ref }}</div>
+    <div style="padding: 3rem;">
+        <form>
+            <div class="text-section--dark enquiry-form__heading el-default-padding">
+              <h2 class="is-size-3">Make an enquiry</h2>
+            </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                  <input name="name" class="input" type="text" placeholder="eg: Graham Green" required>
+                </div>
+            </div>
+            <div class="field">
+                  <label class="label">E-Mail</label>
+                  <div class="control">
+                    <input name="name" class="input" type="email" placeholder="eg: ggreen@gmail.com" required>
+                  </div>
+            </div>
+            <div class="field">
+                <label class="label">Message</label>
+                <div class="control">
+                  <textarea class="textarea">Please send me more information about this interesting {{ .Params.ptype }}</textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    Get property alerts & newsletter by email
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input type="hidden" name="cc" id="cc" value="post@manfredcostahomes.com">
+                    <input type="hidden" name="property" id="property" value="<a href='www.manfredcostahomes.com/{{ .Params.slug }}'>{{ .Params.ref }}</a>">
+                    <input type="hidden" name="price" id="price" value="EUR <span class='price_eur'>€{{ .Params.price }}</span> ">
+                    <input type="hidden" name="photo" id="photo" value="<img src='{{ .Params.thumb }}'/>">
+                    <input id="source" name="formname" type="hidden" value="ManfredCostHomes Enquiry {{ .Params.ref }}">
+                  <input type="submit" class="button is-sendenq" value="Send enquiry">
+                </div>                    
+            </div>                   
+          </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+{{ end }}
+{{ define "more" }}
+
+{{ end }}
+
+{{ define "footer" }}
+ 
+{{ end }}
+
+{{ define "foot" }}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+<script>
+function goback(fallbackUrl) {
+  fallbackUrl = fallbackUrl || '/';
+  var prevPage = window.location.href;
+
+  window.history.go(-1);
+
+  setTimeout(function(){ 
+      if (window.location.href == prevPage) {
+          window.location.href = fallbackUrl; 
+      }
+  }, 500);
+}
+function setbackbutton(){
+  if(document.referrer.indexOf("maxgoldhouse.com") !== -1){
+   $('#btn-property-back').attr('href',document.referrer)
+ }else{
+   $('#btn-property-back').attr('href',window.location.protocol + "//" + window.location.host)
+ }
+ }
+ //form handler
+         function getCookie(name) {
+           var value = "; " + document.cookie;
+           var parts = value.split("; " + name + "=");
+           if (parts.length == 2) return parts.pop().split(";").shift();
+         }
+         $.fn.serializeObject = function()
+         {
+           var o = {};
+           var a = this.serializeArray();
+           $.each(a, function() {
+             if (o[this.name] !== undefined) {
+               if (!o[this.name].push) {
+                 o[this.name] = [o[this.name]];
+               }
+               o[this.name].push(this.value || '');
+             } else {
+               o[this.name] = this.value || '';
+             }
+           });
+           o['url'] = location.protocol + '//' + location.host + location.pathname;
+           o['visitor']=getCookie("_ga")
+           return o;
+         };
+  $('form').submit(function() {
+ 
+           var thedata = JSON.stringify($(this).serializeObject())
+           var script = document.createElement('script');
+           script.src = 'https://script.google.com/macros/s/AKfycbzF8mtsJGKncig2iRUXyW1JdwfZMKtNtFBhHD36bY4SCFmWg_7q/exec?data='+thedata;
+           document.body.appendChild(script);
+           var enqname = $(this).find('input[name="name"]').val();
+           var thankmsg = '<p>Thanks '+enqname+'. One of our Property Experts will contact you.</p>';
+           $(this).html(thankmsg);
+           return false;
+         });
+</script>
+{{ end }}

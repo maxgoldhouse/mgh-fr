@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Search for a Spanish Costa Property</title>
+      <link rel="stylesheet" href="../../css/styles.css?46">
+</head>
+<body>
+  
+  {{  partial "header.html" . }}
+    
+<main>
+<div id="propresults" class="container propertylist"> 
+<!-- RESULTS SHOULD ARRIVE HERE --> 
+
+</div>
+<section style="padding: 0 10%">
+{{  partial "rubruns.html" . }}
+</section>
+</main>
+
+<footer>
+<div class="column right has-background-black">
+    <p class="navbar-item has-text-white is-uppercase">cookies </p>
+    <p class="navbar-item has-text-white is-uppercase">Privacy </p>
+</div>
+</footer>
+<script src="//cdnjs.cloudflare.com/ajax/libs/taffydb/2.7.3/taffy-min.js"></script>
+<script>
+function getQueryStringValue (key) {  
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+} 
+
+//template engine
+!function(e){"use strict";var n=function(e,t){var r=/[^\w\-\.:]/.test(e)?new Function(n.arg+",tmpl","var _e=tmpl.encode"+n.helper+",_s='"+e.replace(n.regexp,n.func)+"';return _s;"):n.cache[e]=n.cache[e]||n(n.load(e));return t?r(t,n):function(e){return r(e,n)}};n.cache={},n.load=function(e){return document.getElementById(e).innerHTML},n.regexp=/([\s'\\])(?!(?:[^{]|\{(?!%))*%\})|(?:\{%(=|#)([\s\S]+?)%\})|(\{%)|(%\})/g,n.func=function(e,n,t,r,c,u){return n?{"\n":"\\n","\r":"\\r","\t":"\\t"," ":" "}[n]||"\\"+n:t?"="===t?"'+_e("+r+")+'":"'+("+r+"==null?'':"+r+")+'":c?"';":u?"_s+='":void 0},n.encReg=/[<>&"'\x00]/g,n.encMap={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;"},n.encode=function(e){return(null==e?"":""+e).replace(n.encReg,function(e){return n.encMap[e]||""})},n.arg="o",n.helper=",print=function(s,e){_s+=e?(s==null?'':s):_e(s);},include=function(s,d){_s+=tmpl(s,d);}","function"==typeof define&&define.amd?define(function(){return n}):"object"==typeof module&&module.exports?module.exports=n:e.tmpl=n}(this);
+// run query and return HTML block
+function querythedb(thedb,thequery){
+  var qHTML = ""
+  thedb.sort("price asec");
+  thedb(thequery).each(function (r) {
+   qHTML = qHTML+tmpl("tmpl-demo", r)
+   });
+ return qHTML
+}
+
+//prepare querystring multivalues
+function prepqsmulti(QSPlaces){
+  var arrPlaces = QSPlaces.split(',');
+  for(i in arrPlaces){
+      arrPlaces[i] = '"'+arrPlaces[i]+'"'
+    };
+  var strPlaces = arrPlaces.join(', ');
+  return strPlaces;
+  };
+//get the querystring
+
+fetch('/property/index.json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(json) {
+    console.log(JSON.stringify(json.data));
+  var propsdb = TAFFY(json.data);
+  //propsdb.sort("price asec");
+  var tafqry = [];
+  var theqry = ""
+  var outputHTML = ""
+
+  if(outputHTML ==""){
+    // try a community search
+      tafqry.length = 0
+      tafqry.push('"price":{"!is":"SOLD"}')
+      tafqry.push('"community":['+prepqsmulti(getQueryStringValue("location").replace(/\+/g," "))+']')
+      console.log(JSON.parse('{'+tafqry.join(', ')+'}'))
+      theqry = JSON.parse('{'+tafqry.join(', ')+'}')
+      outputHTML = outputHTML + querythedb(propsdb,theqry)
+   }
+
+  if(outputHTML ==""){
+    // try a costa search
+      tafqry.length = 0
+      tafqry.push('"price":{"!is":"SOLD"}')
+      tafqry.push('"costa":['+prepqsmulti(getQueryStringValue("location").replace(/\+/g," "))+']')
+      console.log(JSON.parse('{'+tafqry.join(', ')+'}'))
+      theqry = JSON.parse('{'+tafqry.join(', ')+'}')
+      outputHTML = outputHTML + querythedb(propsdb,theqry)
+   }
+
+  if(outputHTML ==""){
+    // try a town search
+      tafqry.length = 0
+      tafqry.push('"price":{"!is":"SOLD"}')
+      tafqry.push('"province":['+prepqsmulti(getQueryStringValue("location").replace(/\+/g," "))+']')
+      console.log(JSON.parse('{'+tafqry.join(', ')+'}'))
+      theqry = JSON.parse('{'+tafqry.join(', ')+'}')
+      outputHTML = outputHTML + querythedb(propsdb,theqry)
+   }
+
+  if(outputHTML ==""){
+  // try a town search
+    tafqry.length = 0
+    tafqry.push('"price":{"!is":"SOLD"}')
+    tafqry.push('"town":['+prepqsmulti(getQueryStringValue("location").replace(/\+/g," "))+']')
+    console.log(JSON.parse('{'+tafqry.join(', ')+'}'))
+    theqry = JSON.parse('{'+tafqry.join(', ')+'}')
+    outputHTML = outputHTML + querythedb(propsdb,theqry)
+ }
+
+  if(outputHTML ==""){
+    // try a location search
+    tafqry.length = 0
+    tafqry.push('"price":{"!is":"SOLD"}')
+    tafqry.push('"location":['+prepqsmulti(getQueryStringValue("location").replace(/\+/g," "))+']')
+    console.log(JSON.parse('{'+tafqry.join(', ')+'}'))
+    theqry = JSON.parse('{'+tafqry.join(', ')+'}')
+    outputHTML = outputHTML + querythedb(propsdb,theqry)
+  } 
+
+  //debuglineconsole.log(loc_list)
+  if(outputHTML ==""){outputHTML = "<center><div class='hero-body is-size-4'>Nothing Found for your search <b>"+getQueryStringValue("location")+"</b> <a href='/'>try again</a> or follow a link below</div></center>"}//"+findref+"
+  document.getElementById("propresults").innerHTML = outputHTML
+
+});
+</script>
+
+<script type="text/x-tmpl" id="tmpl-demo">                  
+        
+        <a href="/property/{%=o.url.toLowerCase()%}" style="color:black;">
+        <div class="property columns">  
+            <div class="column is-one-third" style="position:sticky;">      
+                <div class="rubrunimage withbuttons" style='min-height:300px;background-size: cover;background-repeat:no-repeat;background:cover;background-image:url({%=o.thumb%});'>
+                  {% if (o.salestage == 2 ) { %}
+                  <button class="button is-medium is-danger is-sold"> S O L D </button>
+                  {% } %}
+                  {% if (o.salestage == 1 ) { %}
+                  <button class="button is-medium is-warning is-offer"> R E S E R V E D </button>
+                  {% } %}
+                  {% if (o.salestage == 0 ) { %}
+                  <button class="button is-medium is-price"> {%=o.ptype%} €{%=o.price%} </button>
+                  {% } %}
+                </div>        
+             </div>
+            <div class="column is-two-thirds ">
+                <div class="pad-8">
+                    <div class="is-size-4">{%=o.beds%} Bedroom {%=o.ptype%} in {%=o.location.replace("[", "").replace("]", "")%}</div>
+   
+                            <div class="column is-three-fifths">
+                                <div class="columns is-mobile">
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Bedrooms" src="../../img/bed-dark.png"/></span><br/> {%=o.beds%} </div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Bathrooms" src="../../img/bath-dark.png"/></span><br/>  {%=o.baths%} </div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Swimming Pool" src="../../img/pool-dark.png"/></span><br/>{%=o.pool%}</div>
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Living Space" src="../../img/plan-dark.png"/></span><br/> {%=o.living%} m²</div>
+                                    {% if (o.living == o.plot ) { %}
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Plot Size" src="../../img/plot-dark.png"/></span><br/></div>
+                                    {% } else { %}
+                                    <div class="column  is-one-fifth is-vcentered has-text-centered"><span class="is-size-7"><img title="Plot Size" src="../../img/plot-dark.png"/></span><br/> {%=o.plot%} m²</div>
+                                    {% } %}
+                                    
+                                </div>
+                            </div>
+                    <p class="label--text-color card__description el-mb-clear">{%=o.desc%}...</p>
+                    <button class="button is-medium is-info see-details">See details</button>
+                </div>              
+            </div>
+        </div>
+        </a>
+    <hr>
+
+    
+   <br/>  
+
+</script>
+
+</body>
+</html>
