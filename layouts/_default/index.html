@@ -7,79 +7,11 @@
 {{ end }}
 
 {{ define "main" }}
-  <div class="columns is-centered">
-    <div class="column is-half is-desktop "> 
-      <!-- 
-      'https://lh3.googleusercontent.com/-ZFf46YxgGUs/XE8Kq2bjLII/AAAAAAAAX7c/BR_z3Tg2OBYYnjMDR3vSOg_ZIki4_hiAACLcBGAs/s0-e30-l100-rj/pool.png' 
-      'https://lh3.googleusercontent.com/-2c1WuR-_vzc/XE8O5L8hwfI/AAAAAAAAX8E/GUS6-BfOmvsFyP9njqi0xShQjBqCZRcBACLcBGAs/s0-e30-l100-rj/boganvilla.jpg' 
-      https://2.bp.blogspot.com/-sUsGBYCY37w/XFMvZoMFu2I/AAAAAAAAX-k/JVTQDdtQRM4kVW8y7Kh3awKpkB3GJtaLgCLcBGAs/s1600/Guardamar%2BBeach%2B3.jpg
-    -->
-      <div class="fpsearch sticky" style="background-image:url('https://res.cloudinary.com/manfredcostahomes/image/upload/1a1beachsidepool-min.jpg');background-size:cover;">
-        <div id="fpsearchformholder">
-          <div >
-            <p class="is-size-2 has-text-white">Start Your New Life In Spain</p>
-            <form  action="/search/" method="GET">
-              <div class="field">
-                  <label class="label has-text-white" style="xtext-shadow:3px 3px #000;">Where do you want to live?</label>
-                  <div class="control">
-                    <input class="input" name="location" type="text" placeholder="eg. Costa Blanca South">
-                  </div>
-                  <div class="control">
-                    <input class="button is-medium is-info see-details" type="submit" value="Search">
-                  </div>
-                </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column is-half is-desktop is-size-4 fpbigbuttons">
-      <div class="columns is-multiline ">
-          <div class="column is-half hometile"> 
-              <div style="background-image:url('https://lh3.googleusercontent.com/-ZPoPMe7Wr5Y/XFAWaHQrjdI/AAAAAAAAX84/O6OoEbn0G_4_FGQvVYgThhUz2uCQIMfkQCLcBGAs/w400-h250-p-e30-rj-l100/sandyth.jpg');min-height:250px;background-size:cover;">
-                    <a href="/homes/townhouse" class="hometilelabel is-size-4">Town Houses</a>
-                  </div>
-                </div>
-          
-        <div class="column is-half hometile"> <!-- 'https://lh3.googleusercontent.com/-XxCOAkfnLVM/XFAUh_5c5pI/AAAAAAAAX8g/AEB53mOvId8GSMsOH80H9MD95_wndpJQwCLcBGAs/w400-h250-p-e30-rj-l100/townhouses.jpg','https://lh3.googleusercontent.com/-xK1nV3c1mnY/XFAeiYRXmFI/AAAAAAAAX9Q/p18-fTwxyigD1AxXM-NjiI2d_7Dzdf6DwCLcBGAs/w400-h250-p-e30-rj-l100/lavilla.jpg' -->
-        <div style="background-image:url('https://lh3.googleusercontent.com/-XxCOAkfnLVM/XFAUh_5c5pI/AAAAAAAAX8g/AEB53mOvId8GSMsOH80H9MD95_wndpJQwCLcBGAs/w400-h250-p-e30-rj-l100/townhouses.jpg');min-height:250px;background-size:cover;">
-              <a href="/homes/alicante-province" class="hometilelabel is-size-4">Alicante Province</a>
-            </div>
-          </div>
 
-          <div class="column is-half hometile"> 
-            <div style="background-image:url('https://lh3.googleusercontent.com/-h4C7wzDRn4E/XE8KmDUYvmI/AAAAAAAAX68/D-4LGGI_MksSymvr3tE7QCNGSxAOL26iwCLcBGAs/w400-h250-p-e30-rj-l100/house1.png');min-height:250px;background-size:cover;">
-              <a href="/homes/villa" class="hometilelabel is-size-4">Villas</a>
-            </div>
-          </div>
-          <div class="column is-half hometile"> 
-              <div style="background-image:url('https://lh3.googleusercontent.com/-8RzfvwqIxH4/XE8KrHU-JnI/AAAAAAAAX7g/seyQRAudTDEo_x-iGTYkv4ByLPsNcIHAwCLcBGAs/w400-h250-p-e30-rj-l100/seaview.jpg');min-height:250px;background-size:cover;">
-                <a href="/homes/costa-blanca-south" class="hometilelabel is-size-4">Costa Blanca South</a>
-              </div>
-            </div>
-        <div class="column is-half hometile">
-        <div style="background-image:url('https://3.bp.blogspot.com/-nfU41vGg3Gw/XE8KilY73QI/AAAAAAAAX6U/s3wXpKGnyo8Tx2vO-I-mM-MAik54wFj0wCLcBGAs/w400-h250-p-e30-rj-l100/PuntaPrima1.jpg');min-height:250px;background-size:cover;">
-          <a href="/homes/apartment" class="hometilelabel is-size-4">Apartments</a>
-        </div>        
-        </div>
-        <div class="column is-half hometile"> 
-          <div style="background-image:url('https://lh3.googleusercontent.com/-B0QBCP7Zb5w/XE8ilWigqdI/AAAAAAAAX8Q/fl9fvdQ-jW4Em6dPqaE4J8H-lsQIaW64gCLcBGAs/w400-h250-p-rj-e30-l100/Costa%2BBlanca%2Bnorte.jpg');min-height:250px;background-size:cover;">
-            <a href="/homes/costa-blanca-north" class="hometilelabel is-size-4">Costa Blanca North</a>
-          </div>
-        </div>
-        <div>
-
+  {{  partial "fpsearch.html" . }}
                 
-          {{  partial "rubruns.html" . }}
-                
-              </section>
+  {{  partial "fprubruns.html" . }}
 
-
-        </div>
- 
-      </div>
-    </div>
-  </div>
   
 {{ end }}
 

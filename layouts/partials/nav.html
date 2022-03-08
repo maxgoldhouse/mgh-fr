@@ -1,56 +1,40 @@
-<nav class="navbar sticky">
-    <div class="container">
-      <div class="navbar-brand">
-            <a href="/"><figure class="navbar-item image">
-                    <img src="/img/mch-logo-wide-40.svg" style="max-height: 20rem;" alt="manfred costa homes"/>
-                </figure></a>
-        <span class="navbar-burger burger" data-target="navMenu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-        </span>
-      </div>
-      <div id="navMenu" class="navbar-menu pl-{{ .Permalink }} pe-{{ .Params.deslug }}">
-        <div class="navbar-end">
-          <a href="/homes/resale" class="navbar-item has-text-black is-uppercase ">Resale Homes</a>
-          <a href="/homes/new-build" class="navbar-item has-text-black is-uppercase ">New Homes</a>
-          <a href="/contact/index.html" class="navbar-item has-text-black is-uppercase ">Contact</a>
-          {{ $deUrl := ""}}
-          {{ $globeicon := "//res.cloudinary.com/manfredcostahomes/image/upload/globe.svg" }}
-          {{ if (isset .Params "deslug" ) }}
-            {{ $lowerdeslug := lower .Params.deslug }}
-            {{ $deUrl = printf "%s%s" "/immobilien/" $lowerdeslug }}         
-          {{ else if (in .Permalink "new-build") }}
-            {{ $deUrl = printf "%s" "/homes/neubau/"}}        
-          {{ else if (in .Permalink "resale") }}
-            {{ $deUrl = printf "%s" "/hauser/gebraucht/"}}       
-          {{ else if (in .Permalink "contact") }}
-            {{ $deUrl = printf "%s" "/kontakt/index.html"}}                                            
-          {{ else if (in .Permalink "index.json") }}
-            {{ $deUrl = ""}}        
-          {{ else }}
-            {{if (in .Permalink "homes") }}
-             {{ $deUrl = replace .Permalink "homes" "hauser" }}
-             {{ $deUrl = replace .Permalink "townhouse" "reihenhaus" }}
-             {{ $deUrl = replace .Permalink "apartment" "wohnung" }}           
-             {{ $deUrl = replace $deUrl "costa-blanca-south" "costa-blanca-sud"  }}
-             {{ $deUrl = replace $deUrl "costa-blanca-north" "costa-blanca-nord"  }}
-             {{ $deUrl = strings.TrimRight "/" $deUrl  }}
-            {{end}}       
-          {{ end }}        
-          <a href='{{ .Site.Params.desite }}{{ $deUrl }}' class="navbar-item has-text-black is-uppercase else"><img src="{{ $globeicon }}"/> Deutsch</a>
-        </div>
-      </div>
+<nav class="navbar is-fixed-top is-link">
+    <div class="navbar-brand">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    </a>
+    <a class="" id="btn-property-back" href="javascript:goback('{{Site.host}}');">
+    <svg width="8mm" height="8mm" version="1.1" viewBox="0 0 5.6444 5.6444" xmlns="http://www.w3.org/2000/svg"></svg>
+    </a>
+    <a class="navbar-item" href="/">
+    <img src="https://res.cloudinary.com/maxgoldhouse/image/upload/mghlogo.png" width="280" height="50" style="max-height: 20rem;" alt="MaxGoldHouse Logo">
+    </a>
     </div>
-  </nav>
-  <script type="text/javascript">
-    (function() {
-      var burger = document.querySelector('.burger');
-      var nav = document.querySelector('#'+burger.dataset.target);
-  
-      burger.addEventListener('click', function(){
-        burger.classList.toggle('is-active');
-        nav.classList.toggle('is-active');
-      });
-    })();
-  </script>
+    <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+    <a href="{{Site.host}}index.html" class="navbar-item is-uppercase ">À vendre</a>
+    
+    <a href="achat-le-processus.html" class="navbar-item is-uppercase ">Le processus d'achat</a>
+    <a href="#footer" class="navbar-item is-uppercase ">
+    <p>
+    
+    <img src="https://res.cloudinary.com/maxgoldhouse/image/upload/v1592496930/whatsapp-logo.svg" style="height:20px;padding-right:6px;">
+    <svg xml:space="preserve" style="enable-background:new 0 0 34.482 34.482;" viewBox="0 0 34.482 34.482" height="34.482px" width="34.482px" y="0px" x="0px" class="handy" version="1.1">
+    <g id="g4"><path id="path2" d="M 25.043,7.484 H 12.168 V 1.375 C 12.168,0.616 11.552,0 10.793,0 10.034,0 9.418,0.616 9.418,1.375 V 7.486 C 8.128,7.498 7.075,8.554 7.075,9.847 v 22.272 c 0,1.3 1.064,2.363 2.364,2.363 h 15.604 c 1.3,0 2.364,-1.062 2.364,-2.363 V 9.847 c 0,-1.3 -1.064,-2.363 -2.364,-2.363 z M 12.804,31.76 h -2.548 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.38,-0.851 0.85,-0.851 h 2.548 c 0.469,0 0.85,0.381 0.85,0.851 0,0.468 -0.381,0.849 -0.85,0.849 z m 0,-3.24 h -2.548 c -0.469,0 -0.85,-0.379 -0.85,-0.849 0,-0.469 0.38,-0.851 0.85,-0.851 h 2.548 c 0.469,0 0.85,0.381 0.85,0.851 0,0.47 -0.381,0.849 -0.85,0.849 z m 0,-3.24 h -2.548 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.38,-0.851 0.85,-0.851 h 2.548 c 0.469,0 0.85,0.38 0.85,0.851 0,0.469 -0.381,0.849 -0.85,0.849 z m 0,-3.239 h -2.548 c -0.469,0 -0.85,-0.38 -0.85,-0.85 0,-0.469 0.38,-0.85 0.85,-0.85 h 2.548 c 0.469,0 0.85,0.381 0.85,0.85 0,0.469 -0.381,0.85 -0.85,0.85 z m 5.711,9.719 h -2.547 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.38,-0.851 0.85,-0.851 h 2.547 c 0.47,0 0.85,0.381 0.85,0.851 -10e-4,0.468 -0.381,0.849 -0.85,0.849 z m 0,-3.24 h -2.547 c -0.469,0 -0.85,-0.379 -0.85,-0.849 0,-0.469 0.38,-0.851 0.85,-0.851 h 2.547 c 0.47,0 0.85,0.381 0.85,0.851 0,0.47 -0.381,0.849 -0.85,0.849 z m 0,-3.24 h -2.547 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.38,-0.851 0.85,-0.851 h 2.547 c 0.47,0 0.85,0.38 0.85,0.851 -10e-4,0.469 -0.381,0.849 -0.85,0.849 z m 0,-3.239 h -2.547 c -0.469,0 -0.85,-0.38 -0.85,-0.85 0,-0.469 0.38,-0.85 0.85,-0.85 h 2.547 c 0.47,0 0.85,0.381 0.85,0.85 0,0.469 -0.381,0.85 -0.85,0.85 z m 5.711,9.719 h -2.549 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.381,-0.851 0.85,-0.851 h 2.549 c 0.469,0 0.85,0.381 0.85,0.851 -0.001,0.468 -0.382,0.849 -0.85,0.849 z m 0,-3.24 h -2.549 c -0.469,0 -0.85,-0.379 -0.85,-0.849 0,-0.469 0.381,-0.851 0.85,-0.851 h 2.549 c 0.469,0 0.85,0.381 0.85,0.851 0,0.47 -0.382,0.849 -0.85,0.849 z m 0,-3.24 h -2.549 c -0.469,0 -0.85,-0.38 -0.85,-0.849 0,-0.47 0.381,-0.851 0.85,-0.851 h 2.549 c 0.469,0 0.85,0.38 0.85,0.851 -0.001,0.469 -0.382,0.849 -0.85,0.849 z m 0,-3.239 h -2.549 c -0.469,0 -0.85,-0.38 -0.85,-0.85 0,-0.469 0.381,-0.85 0.85,-0.85 h 2.549 c 0.469,0 0.85,0.381 0.85,0.85 0,0.469 -0.382,0.85 -0.85,0.85 z m 0.9,-3.661 H 9.357 v -7.609 h 15.769 z"></path>
+    </g>
+    </svg>
+    </p>
+    </a>
+    <p class="navbar-item">ellen@maxgoldhouse.com</p>
+    </div>
+    <ul class="languagepicker large navbar-end lingo navbar-item">
+    <a class="addqs" href="https://fr.maxgoldhouse.com/">
+    <li><img class="vam" src="//lh3.googleusercontent.com/kEyBIAzDf4lJtEXKBQyEqsnEgvyaNboEl_4vNL6ZWv_LYJ9P67G6zn3wjq6QGwtho6qjKADDviJW76Ul=s24">FR &nbsp;▼</li></a>
+    <a class="addqs" href="{{ Site.desite}}"><li><span>DE</span></li></a>
+    <a class="addqs" href="{{ Site.ensite}}"><li><span>EN</span></li></a>
+    <a class="addqs" href="{{ Site.nlsite}}"><li><span>NL</span></li></a>
+    </ul>
+    </div>
+    </nav>
