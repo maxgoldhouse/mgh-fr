@@ -14,6 +14,7 @@
 {{ $salestage := int .Params.salestage }}
 {{ $intprice := int .Params.price }}
 {{ $ptype := .Params.ptype }}
+{{ $location := .Params.location }}
 <div class="container layoutpropsingle">
   <div class="columns is-multiline is-desktop is-gapless">
       <div class="column is-three-quarters-desktop">
@@ -21,7 +22,7 @@
               <div class="navbar-item navbar-start has-text-white has-background-mchbrown is-small "><a id="btn-property-back" href="javascript:goback('/');">
                 <img width="30" height="30" title="" alt="" src="/../img/back.png" />
                 </a> </div>
-          <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchbrown">{{ .Params.ptype }} {{ .Params.location }} {{ if in $location .Params.town }} {{ else }}{{ .Params.town }}{{ end }}{{if eq $salestage 0 }} €{{ .Params.price | lang.NumFmt 0 }}{{ end }}{{if eq $salestage 2 }} <button class="button is-medium is-danger is-sold-single"> S O L D </button>{{ end }} {{if eq $salestage 1 }} <button class="button is-medium is-warning is-offer-single"> R E S E R V E D </button>{{ end }}   </div>
+          <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchbrown">{{ .Params.ptype }} {{ $location }} {{ if in $location .Params.town }} {{ else }}{{ .Params.town }}{{ end }}{{if eq $salestage 0 }} €{{ .Params.price | lang.NumFmt 0 }}{{ end }}{{if eq $salestage 2 }} <button class="button is-medium is-danger is-sold-single"> S O L D </button>{{ end }} {{if eq $salestage 1 }} <button class="button is-medium is-warning is-offer-single"> R E S E R V E D </button>{{ end }}   </div>
           </div>
           <amp-carousel  width="150" height="100" layout="responsive" type="slides" autoplay delay="3200"> 
               {{ range .Params.pics }}
