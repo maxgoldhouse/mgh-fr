@@ -11,6 +11,8 @@ relativeURLs = true
   phone = "+34 657 612 295"
   email = "ellen@maxgoldhouse.com"
   address = "03191 Pinar de Campoverde (Alicante)"
+  company = "MaxGoldHouse"
+  director = "Ellen Van den Broek"
 
 [taxonomies]
   maison = "maisons"
