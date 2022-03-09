@@ -1,7 +1,8 @@
 {"feeds":[
     {
       "url": "https://mgh-props.appspot.com/json/propdata/FR",
-      "folder": "property"
+      "livefolder": "/workspace/content/biens/",
+      "folder": "/content/biens/"
     }
   ]
 }
