@@ -6,7 +6,7 @@ package = "/plugins/plugin-feed-to-content"
 contentdirectory = "content"
 [[plugins.inputs.feeds]]
 name = "biens"
-url = "https://mgh-props.appspot.com/json/propdata/EN"
+url = "https://mgh-props.appspot.com/json/propdata/FR"
 ttl = 86400
 
 [context.production.environment]
