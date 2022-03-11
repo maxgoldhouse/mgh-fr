@@ -9,7 +9,7 @@ with open('feeds.json') as feedfile:
   data = json.load(feedfile)
 
 for feed in data['feeds']:
-   contentlocation = '/workspace/content/'+feed['folder']+'/'
+   contentlocation = feed['folder']
    print('cont loc: '+contentlocation)
    url = feed['url']
    response = urlopen(feed['url'])  

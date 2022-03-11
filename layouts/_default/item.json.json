@@ -1,21 +1,24 @@
 {
+    "offeris" : "{{ with .Params.homes }}{{ range last 1 . }}{{ replace . "New Build" "new" }}{{ end }}{{ end }}",
     "ref": "{{ .Params.ref }}",
     "price": "{{ .Params.price }}",
-    "toprice": "{{ .Params.price }}",
-    "fromprice": "{{ .Params.price }}",
+    "displayprice":"{{ int .Params.price | lang.NumFmt 0 }}",
+    "ltprice": "{{ .Params.price }}",
+    "gtprice": "{{ .Params.price }}",
     "salestage": "{{ .Params.salestage }}",
-    "ptype" : "{{ .Params.ptype }}",
+    "unitype": "{{ .Params.ptype }}",
+    "type" : "{{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }}",
     "plot" : "{{ .Params.plot }}",
     "living" : "{{ .Params.living }}",
-    "location" : "{{ .Params.location }}",
+    "location_detail" : "{{ .Params.location }}",
     "town": "{{ .Params.town}}",
     "province": "{{ .Params.province }}",
-    "costa": "{{ .Params.costa }}",
-    "community": "{{ .Params.community }}",
     "beds": "{{ .Params.beds }}",
     "baths": "{{ .Params.baths }}",
     "pool": "{{ .Params.pool }}",
-    "url": "{{ .Params.slug }}",
-    "desc":"{{ substr .Params.description 0 240 }}",
+    "url": "{{ lower .Params.slug }}",
+    "desc":"{{ substr .Params.FR 0 240 }}",
     "thumb":"{{ .Params.thumb }}"
 }
+
+

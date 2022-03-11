@@ -1,21 +1,21 @@
 {
     "ref": "{{ .Params.ref }}",
     "price": "{{ .Params.price }}",
+    "displayprice":"{{ .Params.price | lang.NumFmt 2}}",
     "toprice": "{{ .Params.price }}",
     "fromprice": "{{ .Params.price }}",
     "salestage": "{{ .Params.salestage }}",
-    "ptype" : "{{ .Params.ptype }}",
+    "ptype" : "{{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }}",
     "plot" : "{{ .Params.plot }}",
     "living" : "{{ .Params.living }}",
-    "location" : "{{ .Params.location}}",
+    "location" : "{{ .Params.location }}",
     "town": "{{ .Params.town}}",
     "province": "{{ .Params.province }}",
-    "costa": "{{ .Params.costa }}",
-    "community": "{{ .Params.community }}",
     "beds": "{{ .Params.beds }}",
     "baths": "{{ .Params.baths }}",
     "pool": "{{ .Params.pool }}",
-    "url": "{{ .Params.slug }}",
-    "desc":"{{ substr .Params.description 0 240 }}",
-    "thumb":"{{ .Params.thumb }}"
+    "url": "{{ lower .Params.slug }}",
+    "desc":"{{ substr .Params.FR 0 240 }}",
+    "thumb":"{{ .Params.thumb }}",
+    "from":"taxonomy"
 }

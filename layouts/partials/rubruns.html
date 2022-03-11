@@ -22,37 +22,37 @@
       <span class="column is-full is-size-4">Property Listed by Costa</span>
       {{ range ($scratch.Get "costa") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+          <a href="/maisons/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
       </span>
       {{ end }}
       <span class="column is-full is-size-4">Property Listed by Region</span>
       {{ range ($scratch.Get "region") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+          <a href="/maisons/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
       </span>
       {{ end }}      
       <span class="column is-full is-size-4">Property Listed by Province</span>
       {{ range ($scratch.Get "province") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+          <a href="/maisons/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
       </span>
       {{ end }}
       <span class="column is-full is-size-4">Property Listed By Location</span>
       {{ range ($scratch.Get "location") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
+          <a href="/maisons/{{ . }}">Homes for sale in <locattion style="text-transform: capitalize;" >{{ humanize . }}</locattion></a> 
       </span>
       {{ end }}
       <span class="column is-full is-size-4">Property Listed by Type of Property</span>
       {{ range ($scratch.Get "proptypes") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}"><locattion style="text-transform: capitalize;" >{{ humanize . }} </locattion>homes for sale</a> 
+          <a href="/maisons/{{ . }}"><locattion style="text-transform: capitalize;" >{{ humanize . }} </locattion>homes for sale</a> 
       </span>
       {{ end }}
       <span class="column is-full is-size-4">Property Listed by Price</span>
       {{ range ($scratch.Get "price") }}
       <span class="column is-half is-size-5"> 
-          <a href="/homes/{{ . }}">Homes <locattion style="text-transform: capitalize;" >{{ replace (replace  . "from-" "from €") "-to-" " to €"}}</locattion></a> 
+          <a href="/maisons/{{ . }}">Homes <locattion style="text-transform: capitalize;" >{{ replace (replace  . "from-" "from €") "-to-" " to €"}}</locattion></a> 
       </span>
       {{ end }}
     </div>

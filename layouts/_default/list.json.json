@@ -1,7 +1,8 @@
 {{ define "response" }}
 [
-    {{ range $index, $e := .Data.Pages }}
+    {{ range $index, $e  :=  sort .Data.Pages ".Params.price" "asc"  }}
     {{ if $index }}, {{ end }}{{ .Render "item" }}
     {{ end }}
 ]
 {{ end }}
+
