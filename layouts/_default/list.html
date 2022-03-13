@@ -1,45 +1,61 @@
 {{ define "head" }}
-    
+<script src="https://kit.fontawesome.com/73fe5491f6.js" crossorigin="anonymous"></script>
 {{ end }}
 
 {{ define "header" }}
-
+ 
 {{ end }}
 
 {{ define "main" }}
-<div class="container">                   
-        {{ range sort .Pages .Params.price}}
 
-        <a href='{{ trim .Permalink "index.json"}}' style="color:black;">
-        <div class="property columns">  
-            <div class="column is-one-third">
-         
-                <div class="rubrunimage withbuttons" style='min-height:300px;background-size: cover;background-repeat:no-repeat;background:cover;background-image:url({{ replace .Params.thumb "w640" "w400-h300-p" }});'>
-                    {{if eq .Params.salestage 2}}<button class="button is-medium is-danger is-sold"> S O L D </button>{{ end }}
-                    {{if eq .Params.salestage 1}}<button class="button is-medium is-warning is-offer"> R E S E R V E D </button>{{ end }}
-                </div>           
-
+<div class="columns is-mobile is-multiline" id="topsix">                   
+    {{ range sort .Pages ".Params.price" "asc" }}
+        
+    <div class="column is-3-desktop is-6-mobile is-4-tablet has-text-centered">
+        <div class="card">
+         <a href="../biens/{{ lower .Params.slug }}">       
+            <div class="card-content">
+                <div class="card-image">
+                <figure class="image is-4by3">                     
+                        <img src="{{ .Params.thumb }}" alt="{{ .Params.location }} {{ .Params.type }} for sale" title="{{ .Params.location }} {{ .Params.type }} for sale">                     
+                </figure>
             </div>
-            <div class="column is-two-thirds is-outlined">
-                <div class="proplistdetails">
-                    <div class="is-size-4">{{.Params.beds}} Bedroom {{.Params.ptype}} in {{.Params.location}}</div>
-                        {{ $intprice := int .Params.price }}
-                        <div class="is-size-5">€ <span>{{ lang.NumFmt 2 $intprice "- . ," }}</span></div>
-                            <div class="column is-three-fifths">
-                                <div class="columns is-mobile">
-                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7"><img src="../../img/bed.jpg"/></span><br/> {{ .Params.beds }} </div>
-                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7"><img src="../../img/bath.jpg"/></span><br/>  {{ .Params.baths }} </div>
-                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7">Living space</span><br/>  {{ .Params.living }} m²</div>
-                                    <div class="column  is-one-sixth is-vcentered has-text-centered"><span class="is-size-7">Pool</span><br/>  {{ .Params.pool }}</div>
-                                </div>
-                            </div>
-                    <p class="label--text-color card__description el-mb-clear">{{substr .Params.description 0 240}}...</p>
-                    <button class="btn btn--block btn-primary card__button">See details</button>
-                </div>              
-            </div>
+                <div class="media">
+                      <div class="media-content">
+                        <p class="is-size-6 has-text-centered is-uppercase">{{ .Params.ptype }}</p>
+                        <p class="is-size-7 has-text-centered">{{ .Params.location }}</p>
+                        <p class="is-size-7 has-text-centered"> ref: {{ .Params.ref }} </p>
+                      </div>
+                </div>
+                </a>
+    
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <span class=" is-size-6 is-size-6-mobile">
+                          <i class="fa fa-bed fa-lg" aria-hidden="true"></i> {{ .Params.beds }}
+                        </span>
+                    </p>
+                    <p class="card-footer-item">
+                        <span class=" is-size-6 is-size-6-mobile">
+                          <i class="fa fa-bath fa-lg" aria-hidden="true"></i> {{ .Params.baths }}
+                        </span>
+                    </p>
+                    <p class="card-footer-item">
+                        <span class="is-size-7 is-size-7-mobile {{ .Params.pool }}">
+                          <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i> {{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}comm{{ else if eq .Params.pool "private" }}priv{{ else if eq .Params.pool "public" }}publ{{else}}?{{ end }}
+                        </span>
+                </p>
+                </footer>
+                <footer class=card-footer>
+                    <p class="card-footer-item price">
+                        {{ $price := int .Params.price  }}
+                        {{ $displayprice := $price | lang.NumFmt 0}}
+                        <span class="is-size-6 is-size-5-mobile has-text-weight-bold"> €{{ replace $displayprice "," "." }} </span>                          
+                    </p>
+                </footer>
+             </div>
         </div>
-        </a>
-    <hr>
+      </div> 
     {{ end }}
    <br/>     
 </div>

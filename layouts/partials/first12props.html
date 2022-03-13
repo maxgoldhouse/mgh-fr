@@ -1,0 +1,55 @@
+
+
+<div class="columns is-mobile is-multiline" id="topsix">
+
+  {{ $sortedrange := sort (where .Site.Pages "Section" "biens") ".Params.price" "asc" }}
+  {{ $topsix := where $sortedrange ".Params.topsix" true }}
+  {{ range  $topsix  }}
+<div class="column is-3-desktop is-6-mobile is-4-tablet has-text-centered">
+    <div class="card">
+     <a href="../biens/{{ lower .Params.slug }}">       
+        <div class="card-content">
+            <div class="card-image">
+            <figure class="image is-4by3">                     
+                    <img src="{{ .Params.thumb }}" alt="{{ .Params.location }} {{ .Params.type }} for sale" title="{{ .Params.location }} {{ .Params.type }} for sale">                     
+            </figure>
+        </div>
+            <div class="media">
+                  <div class="media-content">
+                    <p class="is-size-6 has-text-centered is-uppercase">{{ .Params.ptype }}</p>
+                    <p class="is-size-7 has-text-centered">{{ .Params.location }}</p>
+                    <p class="is-size-7 has-text-centered"> ref: {{ .Params.ref }} </p>
+                  </div>
+            </div>
+            </a>
+
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    <span class=" is-size-6 is-size-6-mobile">
+                      <i class="fa fa-bed fa-lg" aria-hidden="true"></i> {{ .Params.beds }}
+                    </span>
+                </p>
+                <p class="card-footer-item">
+                    <span class=" is-size-6 is-size-6-mobile">
+                      <i class="fa fa-bath fa-lg" aria-hidden="true"></i> {{ .Params.baths }}
+                    </span>
+                </p>
+                <p class="card-footer-item">
+                    <span class="is-size-7 is-size-7-mobile">
+                      <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i> {{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}comm{{ else if eq .Params.pool "private" }}priv{{ else if eq .Params.pool "public" }}publ{{else}}?{{ end }}
+                    </span>
+            </p>
+            </footer>
+            <footer class=card-footer>
+                <p class="card-footer-item price">
+                    {{ $price := int .Params.price  }}
+                    {{ $displayprice := $price | lang.NumFmt 0}}
+                    <span class="is-size-6 is-size-5-mobile has-text-weight-bold"> €{{ replace $displayprice "," "." }} </span>                          
+                </p>
+            </footer>
+         </div>
+    </div>
+  </div> 
+
+  {{ end }}
+</div>

@@ -1,0 +1,10 @@
+cheapest 8
+==========
+{{ $sortedrange := first 9 (sort (where .Site.Pages "Section" "biens") ".Params.price" "asc") }}
+{{ range last 8 $sortedrange  }}
+
+topsix props
+============
+{{ $sortedrange := sort (where .Site.Pages "Section" "biens") ".Params.price" "asc" }}
+{{ $topsix := where $sortedrange ".Params.topsix" true}}
+{{ range last 8 $topsix  }}

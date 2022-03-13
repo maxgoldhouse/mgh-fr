@@ -2,7 +2,7 @@
     {
       "url": "https://mgh-props.appspot.com/json/propdata/FR",
       "livefolder": "/workspace/content/biens/",
-      "folder": "~/projects/mgh-sites-netlify/mgh-fr/content/biens/"
+      "folder": "/home/papo/projects/mgh-sites-netlify/biens/"
     }
   ]
 }
