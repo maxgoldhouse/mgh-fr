@@ -29,19 +29,20 @@ module.exports = {
       }
       // fetch the locations and store them in layouts/partials/locations.html
          let partialsFilePath = `${inputs.partialsdirectory}/`;
-         var data = await fetch('https://mgh-props.appspot.com/getgroupedbytown')
-          .then(async function(data) {
-            console.log('thedata '+data)
-            console.log('the partials file path '+partialsFilePath)
-            fs.writeFile(partialsFilePath+'alllocations.html', data, err => {
-              if (err) {
-                console.error(err)
-                return
-              }
-            console.log('alllocations.html written successfully');
-            })
+         fetch('https://mgh-props.appspot.com/getgroupedbytown').then(function(response) {
+          return response.text();
+           }).then(function(string) {
+           console.log(string);
+          fs.writeFile(partialsFilePath+'alllocations.html', data, err => {
+            if (err) {
+              console.error(err)
+              return
             }
-            );
+          console.log('alllocations.html written successfully');
+          })
+      }).catch(function(err) {  
+          console.log('Fetch Error', err);  
+      });
     }
 }
 
