@@ -33,7 +33,7 @@ module.exports = {
           return response.text();
            }).then(function(string) {
            console.log(string);
-          fs.writeFile(partialsFilePath+'alllocations.html', data, err => {
+          fs.writeFile(partialsFilePath+'alllocations.html', string, err => {
             if (err) {
               console.error(err)
               return
