@@ -42,6 +42,16 @@ module.exports = {
              }
            console.log('alllocations.html written successfully');
            })
+           var refs = await fetch('https://mgh-props.appspot.com/refs')
+           .then(async function(res) {
+             return res.text();
+            });
+             fs.writeFile(partialsFilePath+'refs.html', refs, err => {
+               if (err) {
+                 console.error(err)
+                 return
+               }
+             })
            }
            
     }
