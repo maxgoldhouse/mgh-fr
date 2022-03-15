@@ -28,10 +28,12 @@ module.exports = {
         }
       }
       // fetch the locations and store them in layouts/partials/locations.html
-
+         let partialsFilePath = `${inputs.partialsdirectory}/`;
          var data = await fetch('https://mgh-props.appspot.com/getgroupedbytown')
           .then(async function(data) {
-            fs.writeFile(`${inputs.partialsdirectory}/`+'alllocations.html', data+'\n', err => {
+            console.log('thedata '+data)
+            console.log('the partials file path '+partialsFilePath)
+            fs.writeFile(partialsFilePath+'alllocations.html', data, err => {
               if (err) {
                 console.error(err)
                 return
