@@ -2,7 +2,7 @@
     "offeris" : "{{ with .Params.homes }}{{ range last 1 . }}{{ replace . "New Build" "new" }}{{ end }}{{ end }}",
     "ref": "{{ .Params.ref }}",
     "price": "{{ .Params.price }}",
-    "displayprice":"{{ int .Params.price | lang.NumFmt 0 }}",
+    "displayprice":"{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}€{{ int .Params.price | lang.NumFmt 0 }}{{ end }}",
     "ltprice": "{{ .Params.price }}",
     "gtprice": "{{ .Params.price }}",
     "salestage": "{{ .Params.salestage }}",

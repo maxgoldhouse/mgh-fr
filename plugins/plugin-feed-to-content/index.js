@@ -27,5 +27,20 @@ module.exports = {
           }
         }
       }
+      // fetch the locations and store them in layouts/partials/locations.html
+
+         var data = await fetch('https://mgh-props.appspot.com/getgroupedbytown')
+          .then(async function(returnedhtml) {
+            fs.writeFile(`${inputs.partialsdirectory}/`+'alllocations.html', returnedhtml+'\n', err => {
+              if (err) {
+                console.error(err)
+                return
+              }
+            console.log('(alllocations.html written successfully');
+            })
+            }
+            );
     }
 }
+
+          

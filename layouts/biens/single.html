@@ -15,142 +15,145 @@
 {{ $intprice := int .Params.price }}
 {{ $ptype := .Params.ptype }}
 {{ $location := .Params.location }}
-<div class="container layoutpropsingle">
-  <div class="columns is-multiline is-desktop is-gapless">
-      <div class="column is-three-quarters-desktop">
-          <div class="navbar">
-              <div class="navbar-item navbar-start has-text-white has-background-mchbrown is-small "><a id="btn-property-back" href="javascript:goback('/');">
-                <img width="30" height="30" title="" alt="" src="/../img/back.png" />
-                </a> </div>
-                {{ $price := .Params.price | lang.NumFmt 0 }}
-          <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchbrown">{{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }} {{ $location }} {{ if in $location .Params.town }} {{ else }}{{ .Params.town }}{{ end }}{{if eq $salestage 0 }} €{{ replace $price "," "." }}{{ end }}{{if eq $salestage 2 }} <button class="button is-medium is-danger is-sold-single"> S O L D </button>{{ end }} {{if eq $salestage 1 }} <button class="button is-medium is-warning is-offer-single"> R E S E R V E D </button>{{ end }}   </div>
-          </div>
-          <amp-carousel  width="150" height="100" layout="responsive" type="slides" autoplay delay="3200"> 
-              {{ range .Params.pics }}
-              <amp-img src="{{ . }}" width="150" height="80" layout="responsive"></amp-img>
-              {{ end }}
-            </amp-carousel>
-      </div>
-      <div class="column is-one-quarter-desktop is-hidden-touch" id="formboxdesktop">
-        <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchyellow ">Ref: {{ .Params.ref }}</div>
-      <div style="padding: 3rem;">
-          <form>
-              <div class="text-section--dark enquiry-form__heading el-default-padding">
-                <h2 class="is-size-3">Make an enquiry</h2>
-              </div>
-              <div class="field">
-                  <label class="label">Name</label>
-                  <div class="control">
-                    <input name="name" class="input" type="text" placeholder="eg: Graham Green" required>
-                  </div>
-              </div>
-              <div class="field">
-                    <label class="label">E-Mail</label>
-                    <div class="control">
-                      <input name="name" class="input" type="email" placeholder="eg: ggreen@gmail.com" required>
-                    </div>
-              </div>
-              <div class="field">
-                  <label class="label">Message</label>
-                  <div class="control">
-                    <textarea name="message" class="textarea" placeholder="Do you have any questions about this property?">Please send me more information about this {{ .Params.ptype }}</textarea>
-                  </div>
-              </div>
-              <div class="field">
-                  <div class="control">
-                    <label class="checkbox">
-                      <input type="checkbox">
-                      Get property alerts & newsletter by email
-                      </label>
-                  </div>
-              </div>
-              <div class="field">
-                  <div class="control">
-                      <input type="hidden" name="cc" id="cc" value="post@manfredcostahomes.com">
-                      <input type="hidden" name="property" id="property" value="<a href='www.manfredcostahomes.com/{{ .Params.slug }}'>{{ .Params.ref }}</a>">
-                      <input type="hidden" name="price" id="price" value="EUR <span class='price_eur'>€{{ .Params.price }}</span> ">
-                      <input type="hidden" name="photo" id="photo" value="<img src='{{ .Params.thumb }}'/>">
-                      <input id="source" name="formname" type="hidden" value="ManfredCostHomes Enquiry {{ .Params.ref }}">
-                    <input type="submit" class="button is-sendenq" value="Send enquiry">
-                  </div>                    
-              </div>                   
-            </form>
-      </div>
-      </div>
-    <!--</div>-->
-    
-    
-  <!--<div class="columns is-gapless">-->
-    <div class="column is-three-quarters-desktop">
-      <div class="columns is-mobile pad-top-12">
-      <!-- <div class="column  is-one-quarter is-vcentered is-size-5 has-text-centered has-text-white has-background-mchbrown">{{ .Params.ptype }} </div> -->
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/bed.png"/></span><br/> {{ .Params.beds }} </div>
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/bath.png"/></span><br/>  {{ .Params.baths }} </div>
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/pool.png"/></span><br/>  {{ .Params.pool }}</div>
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plan.png"/></span><br/>  {{ .Params.living }} m²</div>    
-      {{ if eq .Params.living .Params.plot}}
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plot.png"/></span><br/></div>
-      {{ else }}
-      <div class="column  is-one-fifth is-vcentered has-text-centered has-text-white has-background-mchbrown "><span class="is-size-7"><img src="../../img/plot.png"/></span><br/>  {{ .Params.plot }} m²</div>
+<div class="container-fluid" id="container">
+  <div class="columns">
+  <div class="column is-12" id="content">
+  
+  <div class="panel panel-default" id="property_box">
+    <div class="columns level">   
+      <div class="column level-item has-text-centered">
+
+      </div>  
+  </div>
+  <div class="panel-body">
+  <div class="columns is-centered">
+  <div class="column is-three-fifths-desktop has-text-centered" id="slideshow">
+  
+
+    <amp-carousel id="custom-button" width="640" height="480" layout="responsive" type="slides" xautoplay xdelay="3200">
+      {{ range .Params.pics }}
+      <amp-img src="{{ . }}" width="150" height="80" layout="responsive"></amp-img>
       {{ end }}
-      
+      </amp-carousel>
+  <!--</div> -->
+  </div>
+  <div id="thanks" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" >Votre demande a été envoyée</p>
+        <button class="delete" aria-label="close" onclick="document.getElementById('thanks').classList.remove('is-active')"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="content">
+          <h1 id="was-subj"></h1>
+          <center><img src='{{ .Params.thumb }}' width="480" /></center>
+          <p>Merci <span id="thanksmsg"></span>. Un membre de l'équipe maxgoldhouse vous contactera.</p>
+        </div>
+        <center>
+        <button class="button" onclick="document.getElementById('thanks').classList.remove('is-active')">Fermer</button>
+        </center>
+      </section>
     </div>
   </div>
-  <!--</div>-->
-  <div class="xsection">
-      <div class="column is-three-quarters-desktop">
-        
-        <div>{{ .Params.FR }}</div>
+  <div id="modal-form" class="modal">
+    <form accept-charset="UTF-8" action="" class="form-horizontal new_enquiry" id="new_enquiry" method="" style="background-color:  ">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" ><span id="subj"></span> ref: {{ .Params.ref }}</p>
+        <button class="delete" aria-label="close" onclick="document.getElementById('modal-form').classList.remove('is-active')"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="content">
+          <h1 id="was-subj"></h1>
+          <center><img src='{{ .Params.thumb }}' width="480" /></center>
+
+  <div class="field col-sm-12"><input class=" form-control input" id="name" name="name" placeholder="Name" size="30" type="text" required=""></div></div>
+  <div class="form-group field"><div class="col-sm-12"><input class="form-control input" id="email" name="email" placeholder="Email" size="30" type="email" required=""></div></div>
+  <div class="form-group field"><div class="col-sm-12"><input class="form-control input" id="phone" name="phone" placeholder="Numéro de téléphone" size="30" type="telephone"></div></div>
+  <div class="form-group field"><div class="col-sm-12"><textarea class=" form-control" cols="40" rows='2' id="msg" name="message"></textarea></div></div>
+  
+  <center><button class="button is-success" id="enquiry_submit" type="submit">Envoyer</button>
+  <button class="button" onclick="document.getElementById('modal-form').classList.remove('is-active')">Fermer</button></center>
+  <span class="spinner fa fa-spinner fa-spin" style="display:none"></span>
+  <input type="hidden" name="cc" id="cc" value="leads@maxgoldhouse.com">
+  <input type="hidden" name="property" id="property" value="<a href='{{ .Site.Params.host }}/biens/{{.Params.slug }}'>{{ .Params.ref }}</a>">
+  <input type="hidden" name="price" id="price" value="EUR {{ .Params.price }}">
+  <input type="hidden" name="propref" id="propref" value="{{ .Params.ref}}">
+  <input type="hidden" name="language" id="language" value="FR">
+  <input type="hidden" name="photo" id="photo" value="<img src='{{ .Params.thumb }}'/>">
+  <input id="source" name="formname" type="hidden" value="MGH Property Enquiry {{ .Params.ref }}">
+  </form>
+  <div></div>
+  
+  <!-- ====================================================================== -->
+
+  </div>
+  </div>
+  </div>
+  <div id="property_detail">
+    <div class="columns level">   
+      <div class="column level-item has-text-centered">
+   
+      </div>  
+   
+  <div class="column level-item has-text-centered"> <h1> <!-- for à vendre --> {{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }} à {{ $location }}</h1></div>
+  {{ $price := int .Params.price  }}
+  {{ $displayprice := $price | lang.NumFmt 0}}
+  <div class="column level-item has-text-centered is-size-4"><strong>{{ if and (eq .Params.offplan "True") (eq .Params.salestage '1' ) }}à partir de {{ end }}{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}<span class="price_eur">€{{ replace $displayprice "," "." }}{{ end }}</span></strong></div>
+  <div class="column level-item has-text-centered">ref: <strong>{{ .Params.ref }}</strong></div>
+  <div class="column level-item"></div>
+  </div>
+  <div id="features">
+  
+  <div class="columns  is-centered">
+    <div class="column is-6">
+      <div class="columns features is-multiline is-mobile">
+        <div class="column is-one-fifth has-text-centered"><img src="/img/bed-dark.png"/><br/> <b>{{ .Params.beds}}</b></div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/bath-dark.png"/><br/> <b>{{ .Params.baths }}</b> </div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/plan-dark.png"/><br/> <b>{{ .Params.livingarea }} m<sup>2</sup></b></div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/plot-dark.png"/><br/> <b>{{ .Params.plotsize }} m<sup>2</sup></b></div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/pool-dark.png"/><br/> <b>{{ .Params.pool }}</b></div>   
       </div>
     </div>
-    <div class="column is-one-quarter-desktop is-hidden-desktop" id="formboxtouch">
-      <div class="navbar-item column is-vcentered is-size-4 has-text-centered has-text-white has-background-mchyellow ">Ref: {{ .Params.ref }}</div>
-    <div style="padding: 3rem;">
-        <form>
-            <div class="text-section--dark enquiry-form__heading el-default-padding">
-              <h2 class="is-size-3">Make an enquiry</h2>
-            </div>
-            <div class="field">
-                <label class="label">Name</label>
-                <div class="control">
-                  <input name="name" class="input" type="text" placeholder="eg: Graham Green" required>
-                </div>
-            </div>
-            <div class="field">
-                  <label class="label">E-Mail</label>
-                  <div class="control">
-                    <input name="name" class="input" type="email" placeholder="eg: ggreen@gmail.com" required>
-                  </div>
-            </div>
-            <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                  <textarea class="textarea">Please send me more information about this interesting {{ .Params.ptype }}</textarea>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox">
-                    Get property alerts & newsletter by email
-                    </label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                    <input type="hidden" name="cc" id="cc" value="post@manfredcostahomes.com">
-                    <input type="hidden" name="property" id="property" value="<a href='www.manfredcostahomes.com/{{ .Params.slug }}'>{{ .Params.ref }}</a>">
-                    <input type="hidden" name="price" id="price" value="EUR <span class='price_eur'>€{{ .Params.price }}</span> ">
-                    <input type="hidden" name="photo" id="photo" value="<img src='{{ .Params.thumb }}'/>">
-                    <input id="source" name="formname" type="hidden" value="ManfredCostHomes Enquiry {{ .Params.ref }}">
-                  <input type="submit" class="button is-sendenq" value="Send enquiry">
-                </div>                    
-            </div>                   
-          </form>
-    </div>
+    
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-6 has-text-centered">
+      <button onclick="openEngForm('Demande d\'informations','Envoyer plus d\'informations sur ref: {{ .Params.ref }}')" class="button is-warning xis-large">Ouvrir le formulaire de demande</button>     
     </div>
   </div>
-</div>
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <div class="columns">
+         <div class="column is-three-quarters" id="prop-description">
+          {{ .Params.FR }} 
+          {{ .Params.moredetails }} 
+        </div>
+         <div class="column is-one-quarter" style="width: 80%;margin: 0 auto">
+          <a href="https://europe-west1-mgh-props.cloudfunctions.net/Brochures-Maxgoldhouse-FR?b={{ .Params.ref }}" target="_blank"><img src='{{ replace .Params.thumb  "w400-h240" "w134-h100" }}' style="border-top: 6px solid #3273dc;border-bottom: 6px solid #3273dc;padding:8px;" /><p class="is-size-7">Télécharger la brochure <img src="{{ .Site.Params.host }}/img/pdf.svg" height="24" style="vertical-align: sub;height:24px!important"></p></a>
+         </div>
+      </div>
+   </div>
+  </div>
+  
+  
+  <div class="columns is-centered">
+    <div class="column is-6 has-text-centered">
+      <button onclick="openEngForm('Demande d\'informations','Envoyer plus d\'informations sur ref: {{ .Params.ref }}')" class="button is-warning xis-large">Ouvrir le formulaire de demande</button>     
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="panel-footer">
+    <div class="columns"></div>
+  </div>
+  </div>
+  
+  </div>
+  </div>
+  </div>
 
 
 {{ end }}
@@ -186,6 +189,11 @@ function setbackbutton(){
    $('#btn-property-back').attr('href',window.location.protocol + "//" + window.location.host)
  }
  }
+ function openEngForm(title,msg){
+    document.getElementById('modal-form').classList.add('is-active');
+    //document.getElementById('subj').innerHTML = title;
+    document.getElementById('msg').innerHTML = msg;
+  }
  //form handler
          function getCookie(name) {
            var value = "; " + document.cookie;
@@ -210,16 +218,18 @@ function setbackbutton(){
            o['visitor']=getCookie("_ga")
            return o;
          };
-  $('form').submit(function() {
- 
-           var thedata = JSON.stringify($(this).serializeObject())
-           var script = document.createElement('script');
-           script.src = 'https://script.google.com/macros/s/AKfycbybMyLr1_E6Mf-OxJUSVLa6SmUUcBjaa1gLTyOyeSttR17kFhemI5AIORUm_SOH2Ppz/exec?data='+thedata;
-           document.body.appendChild(script);
-           var enqname = $(this).find('input[name="name"]').val();
-           var thankmsg = '<p>Thanks '+enqname+'. One of our Property Experts will contact you.</p>';
-           $(this).html(thankmsg);
-           return false;
-         });
+         $('form').submit(function() {
+               var thedata = JSON.stringify($(this).serializeObject())
+               var script = document.createElement('script');
+               // commented script includes line htmlbod = htmlbod + '<br/>https://props.maxgoldhouse.com/putpropinemail/'+parsedjson.property+'<br/>';
+               script.src = 'https://script.google.com/macros/s/AKfycbxSsUuPWryUrzsF6y1jzPvOsjYdyR0oXTVvz4nI6KypSJx1x3mNCywL2LwfcS9yanv1/exec?data='+thedata;
+               //script.src = 'https://script.google.com/macros/s/AKfycbwFOPvfoJMpt-OgtwsC2PDo56pNWO7h5QQjJAgzbsRxBgucsFb9/exec?data='+thedata;
+               document.body.appendChild(script);
+               var enqname = $(this).find('input[name="name"]').val();
+               document.getElementById("modal-form").classList.remove('is-active')
+               document.getElementById("thanks").classList.add('is-active')
+               $('#thanksmsg').html(enqname);
+               return false;
+             });
 </script>
 {{ end }}

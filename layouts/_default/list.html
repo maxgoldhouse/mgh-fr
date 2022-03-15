@@ -13,11 +13,12 @@
         
     <div class="column is-3-desktop is-6-mobile is-4-tablet has-text-centered">
         <div class="card">
-         <a href="../biens/{{ lower .Params.slug }}">       
+         <a href="../../biens/{{ lower .Params.slug }}">       
             <div class="card-content">
                 <div class="card-image">
                 <figure class="image is-4by3">                     
                         <img src="{{ .Params.thumb }}" alt="{{ .Params.location }} {{ .Params.type }} for sale" title="{{ .Params.location }} {{ .Params.type }} for sale">                     
+                        {{ if eq .Params.salestage "2" }}<span class="sold has-text-weight-bold">{{ .Site.Params.sold }}</span>{{ end }}
                 </figure>
             </div>
                 <div class="media">
@@ -50,7 +51,8 @@
                     <p class="card-footer-item price">
                         {{ $price := int .Params.price  }}
                         {{ $displayprice := $price | lang.NumFmt 0}}
-                        <span class="is-size-6 is-size-5-mobile has-text-weight-bold"> €{{ replace $displayprice "," "." }} </span>                          
+                        <span class="is-size-6 is-size-5-mobile has-text-weight-bold">{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}€{{ replace $displayprice "," "." }}{{ end }}</span>
+                                                 
                     </p>
                 </footer>
              </div>

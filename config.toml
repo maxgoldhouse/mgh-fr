@@ -13,6 +13,7 @@ relativeURLs = true
   address = "03191 Pinar de Campoverde (Alicante)"
   company = "MaxGoldHouse"
   director = "Ellen Van den Broek"
+  sold = "V E N D U"
 
 [taxonomies]
   maison = "maisons"
