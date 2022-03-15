@@ -29,13 +29,13 @@ module.exports = {
       }
       // fetch the locations and store them in layouts/partials/locations.html
          let partialsFilePath = `${inputs.partialsdirectory}/`;
-         var data = await fetch('https://mgh-props.appspot.com/getgroupedbytown')
+         var locations = await fetch('https://mgh-props.appspot.com/getgroupedbytown')
          .then(async function(res) {
            return res.text();
           });
-           console.log('thedata '+data)
+           console.log('the locations  '+locations)
            console.log('the partials file path '+partialsFilePath)
-           fs.writeFile(partialsFilePath+'alllocations.html', data, err => {
+           fs.writeFile(partialsFilePath+'alllocations.html', locations, err => {
              if (err) {
                console.error(err)
                return
@@ -46,6 +46,7 @@ module.exports = {
            .then(async function(res) {
              return res.text();
             });
+            console.log('the refs  '+refs)
              fs.writeFile(partialsFilePath+'refs.html', refs, err => {
                if (err) {
                  console.error(err)
