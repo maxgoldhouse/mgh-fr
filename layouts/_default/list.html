@@ -23,7 +23,7 @@
             </div>
                 <div class="media">
                       <div class="media-content">
-                        <p class="is-size-6 has-text-centered is-uppercase">{{ .Params.ptype }}</p>
+                        <p class="is-size-6 has-text-centered is-uppercase">{{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }}</p>
                         <p class="is-size-7 has-text-centered">{{ .Params.location }}</p>
                         <p class="is-size-7 has-text-centered"> ref: {{ .Params.ref }} </p>
                       </div>

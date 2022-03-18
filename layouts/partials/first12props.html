@@ -3,7 +3,7 @@
 <div class="columns is-mobile is-multiline" id="topsix">
 
   {{ $sortedrange := sort (where .Site.Pages "Section" "biens") ".Params.price" "asc" }}
-  {{ $topsix := where $sortedrange ".Params.topsix" true }}
+  {{ $topsix := where $sortedrange ".Params.topsix" "True" }}
   {{ range  $topsix  }}
 <div class="column is-3-desktop is-6-mobile is-4-tablet has-text-centered">
     <div class="card">
@@ -17,7 +17,7 @@
         </div>
             <div class="media">
                   <div class="media-content">
-                    <p class="is-size-6 has-text-centered is-uppercase">{{ .Params.ptype }}</p>
+                    <p class="is-size-6 has-text-centered is-uppercase">{{ with .Params.maisons }}{{ range first 1 . }}{{ . }}{{ end }}{{ end }}</p>
                     <p class="is-size-7 has-text-centered">{{ .Params.location }}</p>
                     <p class="is-size-7 has-text-centered"> ref: {{ .Params.ref }} </p>
                   </div>

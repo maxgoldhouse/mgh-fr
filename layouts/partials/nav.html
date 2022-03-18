@@ -1,4 +1,4 @@
-<nav class="navbar is-fixed-top is-link">
+<nav id="navbar" class="navbar is-fixed-top is-link">
     <div class="navbar-brand">
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
     <span aria-hidden="true"></span>
@@ -145,4 +145,15 @@
     </ul>
     </div>
     </nav>
-    <script>(function(){var burger=document.querySelector('.burger');var nav=document.querySelector('#'+burger.dataset.target);burger.addEventListener('click',function(){burger.classList.toggle('is-active');nav.classList.toggle('is-active');});})();</script>
+    <script>(function(){var burger=document.querySelector('.burger');var nav=document.querySelector('#'+burger.dataset.target);burger.addEventListener('click',function(){burger.classList.toggle('is-active');nav.classList.toggle('is-active');});})();
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-4.25rem";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+    </script>
