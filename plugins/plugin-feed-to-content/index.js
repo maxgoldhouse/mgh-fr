@@ -33,20 +33,20 @@ module.exports = {
          .then(async function(res) {
            return res.text();
           });
-           console.log('the locations  '+locations)
-           console.log('the partials file path '+partialsFilePath)
+           //console.log('the locations  '+locations)
+           //console.log('the partials file path '+partialsFilePath)
            fs.writeFile(partialsFilePath+'alllocations.html', locations, err => {
              if (err) {
                console.error(err)
                return
              }
-           console.log('alllocations.html written successfully');
+           //console.log('alllocations.html written successfully');
            })
            var refs = await fetch('https://mgh-props.appspot.com/refs')
            .then(async function(res) {
              return res.text();
             });
-            console.log('the refs  '+refs)
+            //console.log('the refs  '+refs)
              fs.writeFile(partialsFilePath+'refs.html', refs, err => {
                if (err) {
                  console.error(err)
