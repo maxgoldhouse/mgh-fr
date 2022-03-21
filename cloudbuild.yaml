@@ -8,5 +8,3 @@ steps:
   - id: 'deploy to firebase'
     name: gcr.io/$PROJECT_ID/firebasedeploy-$PROJECT_ID
     args: ['deploy', '--project=$PROJECT_ID', '--only=hosting']
-
-logging: CLOUD_LOGGING_ONLY
