@@ -12,28 +12,3 @@ ttl = 86400
 
 [context.production.environment]
   HUGO_VERSION = "0.80.0"
-
-[[redirects]]
-from = "/search/"
-query = {location = "Guardamar"}
-to = "/homes/guardamar-del-segura/"
-status = 301
-force = false
-[[redirects]]
-from = "/search/"
-query = {location = "guardamar"}
-to = "/homes/guardamar-del-segura/"
-status = 301
-force = false
-[[redirects]]
-from = "/search/"
-query = {location = "Villamartin"}
-to = "/homes/villamartin/"
-status = 301
-force = false
-[[redirects]]
-from = "/search/"
-query = {location = "villamartin"}
-to = "/homes/villamartin/"
-status = 301
-force = false
