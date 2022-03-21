@@ -1,6 +1,6 @@
 ---
 title: Politique des Cookies
-type: cookie
+type: policy
 ---
 # Politique des cookies
 

@@ -1,6 +1,6 @@
 ---
 title: Politique de Confidentialité
-type: privacy
+type: policy
 ---
 
 
