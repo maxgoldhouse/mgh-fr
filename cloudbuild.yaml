@@ -4,7 +4,7 @@ steps:
     args: ['json2files.py', 'https://props-pp.appspot.com/json/propdata/FR', '/workspace/content/biens/']
   - id: 'build site with hugo'
     name: gcr.io/$PROJECT_ID/hugobuild-$PROJECT_ID
-    args: ['-v','--destination=public']
+    args: ['-v','--destination=public','--config firebaseconfig.toml']
   - id: 'deploy to firebase'
     name: gcr.io/$PROJECT_ID/firebasedeploy-$PROJECT_ID
     args: ['deploy', '--project=$PROJECT_ID', '--only=hosting']
