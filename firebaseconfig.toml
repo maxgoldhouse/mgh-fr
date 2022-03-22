@@ -5,10 +5,9 @@ relativeURLs = true
 
 [params]
   desite = "https://de.maxgoldhouse.com"
-  ensite = "https://www.maxgoldhouse.com"
+  ensite = "https://maxgoldhouse.com"
   nlsite = "https://nl.maxgoldhouse.com"
-  netlifyhost = "https://mgh-fr.netlify.app"
-  host = "https://mgh-3-fr.firebaseapp.com"
+  host = "https://fr.maxgoldhouse.com"
   phone = "+34 657 612 295"
   email = "ellen@maxgoldhouse.com"
   address = "03191 Pinar de Campoverde (Alicante)"
