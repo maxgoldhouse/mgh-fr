@@ -10,7 +10,7 @@ with open('feeds.json') as feedfile:
 
 for feed in data['feeds']:
    contentlocation = feed['folder']
-   print('cont loc: '+contentlocation)
+   #-##print('cont loc: '+contentlocation)
    url = feed['url']
    response = urlopen(feed['url'])  
    jsondict = json.loads(response.read())
@@ -19,10 +19,10 @@ for feed in data['feeds']:
      for lock in key:
         #-## print(key[lock])
         filename = contentlocation+key[lock]['ref']+'.md'
-        print('filename: '+filename)
+        #-##print('filename: '+filename)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         with open(filename, 'w') as f:
-          print('prop ref: '+key[lock]['ref'])
+          #-##print('prop ref: '+key[lock]['ref'])
           f.write(json.dumps(key[lock], indent = 0)) 
 
 partialsfolder = "/workspace/layouts/partials/"
