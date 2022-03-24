@@ -47,10 +47,10 @@
                            {{ range $index, $photo := .Params.pics }}
                            {{ if (eq $index 0 )}}
                            <div style="align-items: center;" class="page landscape columns" >
-                              <div class="column is-8">
+                              <div class="column is-7">
                                  <img src="{{ . }}"></img>
                               </div>
-                              <div class="column is-4">
+                              <div class="column is-5">
                               <div class="page columns features is-centered is-multiline is-mobile">
                               <div class="column is-one-fifth has-text-centered"><img src="/img/bed-dark.png"><br> <b>{{ $beds }}</b></div>
                               <div class="column is-one-fifth has-text-centered"><img src="/img/bath-dark.png"><br> <b>{{ $baths}}</b> </div>
