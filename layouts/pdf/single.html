@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+      <title>{{propref}}.pdf</title>
+      <meta content="fr" http-equiv="Content-Language" />
+      <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+      <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+      <link rel="stylesheet" href="{{ Site.Params.host}}/css/styles.css">
+      <link rel="shortcut icon" href="{{ Site.Params.host}}/img/favicon.ico" />
+      <script src="https://kit.fontawesome.com/73fe5491f6.js" crossorigin="anonymous"></script>
+   </head>
+   <body  class="xxhas-navbar-fixed-top">
+    <header>
+       <nav class="navbar is-fixed-top is-link">
+          <div style="min-width:500px;" class="navbar-brand">
+             <a class="navbar-item" href="/">
+             <img src="https://res.cloudinary.com/maxgoldhouse/image/upload/mghlogo.png" width="280" height="50" style="max-height: 20rem;" alt="MaxGoldHouse Logo">
+             </a>
+             <span style="width:100%;font-size:16px;font-weight:bold;" class="navbar-item has-text-centered">{{proptype}} de {{beds}} chambre  à {{locationdetail}}&nbsp;&nbsp;&nbsp;&nbsp;ref: {{propref}} &nbsp;&nbsp;&nbsp;&nbsp;{{price}}</span>
+          </div>
+       </nav>
+    </header>
+    <div class="container-fluid" id="container">
+      <div class="columns">
+         <div class="column is-12" id="content">
+            <div class="panel panel-default" id="property_box">
+               <div class="panel-body">
+                  <div class="x-out-columns is-centered">
+                     <div class="column has-text-centered" id="slideshow">
+                        <style>
+                           .page {padding-top: 2cm;position: relative;overflow: hidden;page-break-after: always;display: flex;justify-content: center;}
+                           .page.landscape {}
+                           img {width: 90%;height: 90%}
+                           .features{padding-top:120px;max-width: 80%;padding-left:10%;}
+                           .features img{height:24px; width:auto;}
+                           footer .navbar-start img {width: auto;vertical-align: baseline;height: auto;}
+                        </style>
+                           {{ $beds := .Params.beds}}
+                           {{ $baths := .Params.baths}}
+                           {{ $livingarea := .Params.livingarea}}
+                           {{ $plotsize := .Params.plotsize}}
+                           {{ $pool := .Params.pool}}
+                           {{ $fr := .Params.FR }}
+                           {{ range $index, $photo := .Params.pics }}
+                           {{ if (eq $index 0 )}}
+                           <div style="align-items: center;" class="page landscape columns" >
+                              <div class="column is-8">
+                                 <img src="{{ . }}"></img>
+                              </div>
+                              <div class="column is-4">
+                              <div class="page columns features is-centered is-multiline is-mobile">
+                              <div class="column is-one-fifth has-text-centered"><img src="/img/bed-dark.png"><br> <b>{{ $beds }}</b></div>
+                              <div class="column is-one-fifth has-text-centered"><img src="/img/bath-dark.png"><br> <b>{{ $baths}}</b> </div>
+                              <div class="column is-one-fifth has-text-centered"><img src="/img/plan-dark.png"><br> <b>{{ $livingarea}} m<sup>2</sup></b></div>
+                              <div class="column is-one-fifth has-text-centered"><img src="/img/plot-dark.png"><br> <b>{{ $plotsize}} m<sup>2</sup></b></div>
+                              <div class="column is-one-fifth has-text-centered"><img src="/img/pool-dark.png"><br> <b>{{ if eq $pool "No" }}Non{{ else if eq $pool "community" }}comm{{ else if eq $pool "private" }}priv{{ else if eq $pool "public" }}publ{{else}}?{{ end }}</b></div>
+                              <div class="column is-1"></div>
+                              <div class="column is-12 has-text-left">{{$fr}}</div>
+                              </div>
+                              </div>
+                              </div>
+                           {{ else }}
+                           <div class="page landscape" >
+                           <img src=" {{ . }}"></img>
+                           {{ end }}
+                        </div>
+                        {{ end }}
+
+                       <div class="page columns features is-centered is-multiline is-mobile">
+                        <div class="column is-one-fifth has-text-centered"><img src="/img/bed-dark.png"/><br/> <b>{{.Params.beds}}</b></div>
+                        <div class="column is-one-fifth has-text-centered"><img src="/img/bath-dark.png"/><br/> <b>{{.Params.baths}}</b> </div>
+                        <div class="column is-one-fifth has-text-centered"><img src="/img/plan-dark.png"/><br/> <b>{{.Params.livingarea}} m<sup>2</sup></b></div>
+                        <div class="column is-one-fifth has-text-centered"><img src="/img/plot-dark.png"/><br/> <b>{{.Params.plotsize}} m<sup>2</sup></b></div>
+                        <div class="column is-one-fifth has-text-centered"><img src="/img/pool-dark.png"/><br/>  <b>{{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}comm{{ else if eq .Params.pool "private" }}priv{{ else if eq .Params.pool "public" }}publ{{else}}?{{ end }}</b></div>
+                        <div class="column is-1"></div>
+                        <div class="column is-8 has-text-left">{{.Params.FR}}</div>
+                       </div>
+
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+    <footer>
+      <nav class="navbar has-text-centered is-fixed-bottom is-link">
+      <div class="navbar-start">
+      <span style="font-size:14; color:white;font-weight:bold;" class="navbar-item">ellen@maxgoldhouse.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://res.cloudinary.com/maxgoldhouse/image/upload/h_30/whatsmobile.jpg">&nbsp;&nbsp;+34 657 612 295</span>
+      
+      </div>
+      </nav>
+      </footer>
+ </body>
+</html>

@@ -1,7 +1,8 @@
 {"feeds":[
     {
       "url": "https://mgh-props.appspot.com/json/propdata/FR",
-      "folder": "/workspace/content/biens/",
+      "propertyfolder": "/workspace/content/biens/",
+      "pdffolder": "/workspace/content/pdf/",
       "localfolder": "/home/papo/projects/mgh-sites-netlify/biens/"
     }
   ]
