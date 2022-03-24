@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-      <title>{{propref}}.pdf</title>
+      <title>{{ .Params.ref}}.pdf</title>
       <meta content="fr" http-equiv="Content-Language" />
       <meta content="IE=edge" http-equiv="X-UA-Compatible" />
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -17,7 +17,9 @@
              <a class="navbar-item" href="/">
              <img src="https://res.cloudinary.com/maxgoldhouse/image/upload/mghlogo.png" width="280" height="50" style="max-height: 20rem;" alt="MaxGoldHouse Logo">
              </a>
-             <span style="width:100%;font-size:16px;font-weight:bold;" class="navbar-item has-text-centered">{{proptype}} de {{beds}} chambre  à {{locationdetail}}&nbsp;&nbsp;&nbsp;&nbsp;ref: {{propref}} &nbsp;&nbsp;&nbsp;&nbsp;{{price}}</span>
+  {{ $price := int .Params.price  }}
+  {{ $displayprice := $price | lang.NumFmt 0}}
+             <span style="width:100%;font-size:16px;font-weight:bold;" class="navbar-item has-text-centered">{{ .Params.ptype }} de {{.Params.beds}} chambre  à {{.Params.location}}&nbsp;&nbsp;&nbsp;&nbsp;ref: {{.Params.ref}} &nbsp;&nbsp;&nbsp;&nbsp;&euro;{{ replace $displayprice "," "." }}</span>
           </div>
        </nav>
     </header>
