@@ -20,7 +20,7 @@ relativeURLs = true
 
 [outputs]
     page = ["json","html"]
-    section = ["json"] 
+    section = ["json","html"] 
     maison = ["json","html"]
     contact = ["html"]
     politique = ["html"]
