@@ -112,8 +112,8 @@
       <div class="columns features is-multiline is-mobile">
         <div class="column is-one-fifth has-text-centered"><img src="/img/bed-dark.png"/><br/> <b>{{ .Params.beds}}</b></div>
         <div class="column is-one-fifth has-text-centered"><img src="/img/bath-dark.png"/><br/> <b>{{ .Params.baths }}</b> </div>
-        <div class="column is-one-fifth has-text-centered"><img src="/img/plan-dark.png"/><br/> <b>{{ .Params.livingarea }} m<sup>2</sup></b></div>
-        <div class="column is-one-fifth has-text-centered"><img src="/img/plot-dark.png"/><br/> <b>{{ .Params.plotsize }} m<sup>2</sup></b></div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/plan-dark.png"/><br/> <b>{{ .Params.living }} m<sup>2</sup></b></div>
+        <div class="column is-one-fifth has-text-centered"><img src="/img/plot-dark.png"/><br/> <b>{{ .Params.plot }} m<sup>2</sup></b></div>
         <div class="column is-one-fifth has-text-centered"><img src="/img/pool-dark.png"/><br/> <b>{{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}comm{{ else if eq .Params.pool "private" }}priv{{ else if eq .Params.pool "public" }}publ{{else}}?{{ end }}</b></div>   
       </div>
     </div>
