@@ -29,6 +29,7 @@ for feed in data['feeds']:
         os.makedirs(os.path.dirname(pdffilename), exist_ok=True)
         with open(pdffilename, 'w') as f:
           #-##print('prop ref: '+key[lock]['ref'])
+          key[lock]["sitemap_exclude"] = True
           key[lock].pop("maisons")
           f.write(json.dumps(key[lock], indent = 0))            
 
