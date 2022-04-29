@@ -532,7 +532,7 @@
                           </p>
                           <p class="card-footer-item">
                               <span class="is-size-7 is-size-7-mobile">
-                                <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i> [%=o.pool.replace("community","comm").replace("private","priv").replace("public","publ").replace("no","non")%]
+                                <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i>  [%=o.pool=='No' ? 'Non' : 'Oui' %] <i class='fa fa-info-circle is-size-6' title='[%=o.pool.replace("community","Piscine commune").replace("private","Piscine privée").replace("public","Piscine publique à proximité").replace("No","Pas de piscine")%]'></i>
                               </span>
                       </p>
                       </footer>

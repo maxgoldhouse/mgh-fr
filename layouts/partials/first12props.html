@@ -37,7 +37,7 @@
                 </p>
                 <p class="card-footer-item">
                     <span class="is-size-7 is-size-7-mobile">
-                      <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i> {{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}comm{{ else if eq .Params.pool "private" }}priv{{ else if eq .Params.pool "public" }}publ{{else}}?{{ end }}
+                      <i class="fa fa-swimming-pool fa-lg" aria-hidden=true></i> {{ if eq .Params.pool "No" }}Non{{ else if eq .Params.pool "community" }}Oui <i class="fa fa-info-circle is-size-6" title="Piscine commune"></i>{{ else if eq .Params.pool "private" }}ja <i class="fa fa-info-circle is-size-6" title="Piscine privée"></i>{{ else if eq .Params.pool "public" }}ja <i class="fa fa-info-circle is-size-6" title="Piscine publique"></i>{{else}}i{{ end }}
                     </span>
             </p>
             </footer>
