@@ -31,7 +31,7 @@ function openEngForm(title,msg){
                var thedata = JSON.stringify($(this).serializeObject())
                var script = document.createElement('script');
                // commented script includes line htmlbod = htmlbod + '<br/>https://props.maxgoldhouse.com/putpropinemail/'+parsedjson.property+'<br/>';
-               script.src = 'https://script.google.com/macros/s/AKfycbxSsUuPWryUrzsF6y1jzPvOsjYdyR0oXTVvz4nI6KypSJx1x3mNCywL2LwfcS9yanv1/exec?data='+thedata;
+               script.src = 'https://script.google.com/macros/s/AKfycbx66VnmAyT2Y47okeJI1MUA-2_HGrjooblxqHHKCpZZGmT3Aq594Eq1y24AbLh4Wwz0sQ/exec?data='+thedata;
                //script.src = 'https://script.google.com/macros/s/AKfycbwFOPvfoJMpt-OgtwsC2PDo56pNWO7h5QQjJAgzbsRxBgucsFb9/exec?data='+thedata;
                document.body.appendChild(script);
                var enqname = $(this).find('input[name="name"]').val();
