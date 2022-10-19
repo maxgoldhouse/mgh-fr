@@ -461,7 +461,7 @@
     }
     if (qsData.pool == "on"){
       document.getElementById("pool").checked = true;
-      tafqry.push('"pool":{"!is":"Non"}') 
+      tafqry.push('"pool":{"!is":"No"}') 
     }
     console.log('this is the joined tafqry '+tafqry.join(', '))
     theqry = JSON.parse('{'+tafqry.join(', ')+'}')
