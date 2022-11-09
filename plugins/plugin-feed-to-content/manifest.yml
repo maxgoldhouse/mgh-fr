@@ -2,6 +2,8 @@ name: plugin-feeds-to-content
 inputs:
   - name: contentdirectory
     required: true
+  - name: pdfdirectory
+    required: true    
   - name: partialsdirectory
     required: true    
   - name: feeds

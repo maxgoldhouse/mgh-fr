@@ -4,6 +4,7 @@
 package = "/plugins/plugin-feed-to-content"
 [plugins.inputs]
 contentdirectory = "content"
+pdfdirectory = "content/pdf"
 partialsdirectory ="layouts/partials"
 [[plugins.inputs.feeds]]
 name = "biens"

@@ -7,6 +7,7 @@ module.exports = {
     for (const feed of inputs.feeds) {
       // folder to store the md files
       let dataFilePath = `${inputs.contentdirectory}/${feed.name}/`;
+      let pdfFilePath = `${inputs.pdfdirectory}/`;
         var data = await fetch(feed.url)
           .then(async function(res) {
               return res.json();
@@ -24,6 +25,15 @@ module.exports = {
                 }
               //console.log('(file'+ innervalue.ref+'.md written successfully');
              })
+             delete innervalue.homes
+             innervalue.sitemap_exclude = true
+             fs.writeFile(pdfFilePath+innervalue.slug+'.md', JSON.stringify(innervalue)+'\n', err => {
+              if (err) {
+                console.error(err)
+                return
+              }
+            //console.log('(file'+ innervalue.ref+'.md written successfully');
+           })
           }
         }
       }
