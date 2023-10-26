@@ -103,7 +103,6 @@
   {{ $displayprice := $price | lang.NumFmt 0}}
   {{ $fromForNew := ""  }}
   <div class="column level-item has-text-centered is-size-4"><strong>{{ if eq .Params.offplan "True" }}{{ $fromForNew = "A partir de "  }}{{ end }}{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}<span class="price_eur">{{ $fromForNew }} €{{ replace $displayprice "," "." }}{{ end }}</span></strong></div>
-  <div class="column level-item has-text-centered is-size-4"><strong>{{ if and (eq .Params.offplan "True") (eq .Params.salestage '1' ) }}à partir de {{ end }}{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}<span class="price_eur">€{{ replace $displayprice "," "." }}{{ end }}</span></strong></div>
   <div class="column level-item has-text-centered">ref: <strong>{{ .Params.ref }}</strong></div>
   <div class="column level-item"></div>
   </div>
