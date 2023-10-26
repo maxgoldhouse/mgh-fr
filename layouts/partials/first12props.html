@@ -43,9 +43,12 @@
             </footer>
             <footer class=card-footer>
                 <p class="card-footer-item price">
+                    {{ $fromForNew := ""  }}
                     {{ $price := int .Params.price  }}
                     {{ $displayprice := $price | lang.NumFmt 0}}
-                    <span class="is-size-6 is-size-5-mobile has-text-weight-bold">{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}€{{ replace $displayprice "," "." }}{{ end }}</span>                          
+                    <span class="is-size-6 is-size-5-mobile has-text-weight-bold">{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}€{{ replace $displayprice "," "." }}{{ end }}</span> 
+                    {{ if eq .Params.offplan "True" }}{{ $fromForNew = "A partir de "  }}{{ end }}
+                    <span class="is-size-6 is-size-5-mobile has-text-weight-bold">{{ if eq .Params.salestage "2" }}{{ .Site.Params.sold }}{{else}}{{ $fromForNew }} €{{ replace $displayprice "," "." }}{{ end }}</span>                          
                 </p>
             </footer>
          </div>
