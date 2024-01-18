@@ -13,7 +13,7 @@ relativeURLs = true
   address = "03191 Orihuela Costa (Alicante)"
   company = "MaxGoldHouse"
   director = "Ellen Van den Broek"
-  apireg: "Membre API enregistré: RAICV2961"
+  apireg = "Membre API enregistré: RAICV2961"
   sold = "V E N D U"
 
 [taxonomies]
