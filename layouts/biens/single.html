@@ -223,7 +223,7 @@ function setbackbutton(){
                var thedata = JSON.stringify($(this).serializeObject())
                var script = document.createElement('script');
                // commented script includes line htmlbod = htmlbod + '<br/>https://props.maxgoldhouse.com/putpropinemail/'+parsedjson.property+'<br/>';
-               script.src = 'https://fr.maxgoldhouse.com/.netlify/functions/formhandler?data='+thedata;
+               script.src = 'https://maxgoldhouse.com/.netlify/functions/formhandler?data='+thedata;
                document.body.appendChild(script);
                var enqname = $(this).find('input[name="name"]').val();
                document.getElementById("modal-form").classList.remove('is-active')
